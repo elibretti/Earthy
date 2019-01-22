@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> user_auth
 const path = require('path');
 
 module.exports = {
@@ -29,8 +25,4 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*"]
   }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> user_auth
