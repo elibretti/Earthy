@@ -27,8 +27,13 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack",
-    "webpack": "webpack --watch --mode=development"
+    "postinstall": "./node_modules/.bin/webpack --mode=production",
+    "start": "./node_modules/.bin/webpack --mode=production",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "repository": {
     "type": "git",
@@ -41,4 +46,5 @@
     "url": "https://github.com/elibretti/Earthy/issues"
   },
   "homepage": "https://github.com/elibretti/Earthy#readme"
+
 }
