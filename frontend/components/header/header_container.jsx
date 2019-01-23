@@ -4,7 +4,7 @@ import {openModal} from '../../actions/modal_actions';
 import Header from './header';
 
 const msp = (state) => {
-    let current_user = state.session.id ? state.users[state.session.id] : null;
+    let current_user = state.session.id ? state.entities.users[state.session.id] : null;
     return {
         current_user: current_user,
     }

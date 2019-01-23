@@ -23,6 +23,13 @@ class LoginForm extends React.Component{
         }
     }
 
+    handleCheck(){
+            this.state = {
+                email: "DemoUser",
+                password: "DemoUser"
+            }
+    }
+
     renderErrors(){
         return( 
             <ul> 
@@ -36,22 +43,35 @@ class LoginForm extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className='login form-container'>
                 {this.renderErrors()}
-                <form onSubmit={this.handleSubmit} className='login-form'>
+                <form onSubmit={this.handleSubmit} className='login form'>
                 <h2> Sign in to Continue</h2>
-                <label>
-                    Email address
-                    <input type='text' 
+                <label htmlFor="email">
+                    Email address <span id='asterisk'>*</span>
+                </label>
+                <input type='text' 
+                    id="email"
                     value={this.state.email} 
                     onChange={this.update("email")}/>
+                <label htmlFor="password">
+                    Password <span id='asterisk'>*</span>
                 </label>
-                <label>
-                    Password
-                    <input type='password' 
+                <input 
+                    id='password'
+                    type='password' 
                     value={this.state.password} 
                     onChange={this.update("password")}/>
+                <label htmlFor="checkbox">
+                    Demo Login?
                 </label>
+                <input 
+                    type="checkbox" 
+                    id="checkbox"
+                    onChange={this.handleCheck(this)}
+                    />
+                    <span className="checkmark"></span>
+                    
                 <input type="submit" value="Sign In"/>
                 </form>
             </div>

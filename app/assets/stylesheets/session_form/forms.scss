@@ -1,0 +1,56 @@
+.form-container{
+    background-color: white;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.form-container h2 {
+   font-size: 26px;
+   font-weight: 500;
+}
+.form-container h3 {
+    margin-top: 5px;
+    font-weight: 300;
+    font-size: 14px;
+ }
+
+.form-container label {
+    display: block;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 550;
+
+}
+
+#asterisk{
+    color:red;
+    font-weight: 300;
+}
+
+
+.form-container input {
+    display: block;
+    height: 30px;
+    width: 300px;
+    padding: 10px; 
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.form-container input[type='submit'] { 
+    width: 300px;
+    margin: 20px 0;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+

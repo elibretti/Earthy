@@ -347,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  var current_user = state.session.id ? state.users[state.session.id] : null;
+  var current_user = state.session.id ? state.entities.users[state.session.id] : null;
   return {
     current_user: current_user
   };
@@ -590,6 +590,14 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "handleCheck",
+    value: function handleCheck() {
+      this.state = {
+        email: "DemoUser",
+        password: "DemoUser"
+      };
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
@@ -601,18 +609,38 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login form-container"
+      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Sign in to Continue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "login form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Sign in to Continue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "Email address ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        id: "email",
         value: this.state.email,
         onChange: this.update("email")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "password"
+      }, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "password",
         type: "password",
         value: this.state.password,
         onChange: this.update("password")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "checkbox"
+      }, "Demo Login?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox",
+        id: "checkbox",
+        onChange: this.handleCheck(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "checkmark"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Sign In"
       })));
@@ -750,22 +778,39 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup form-container"
+      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create your account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Registration is easy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "signup form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create your account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Registration is easy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "Email address ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        id: "email",
         value: this.state.email,
         onChange: this.update("email")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "First name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        id: "name",
         value: this.state.first_name,
         onChange: this.update("first_name")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "password"
+      }, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
+        id: "password",
         value: this.state.password,
         onChange: this.update("password")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Register"
       })));
@@ -917,7 +962,7 @@ var modalReducer = function modalReducer() {
       return action.modal;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
-      return action.modal;
+      return null;
 
     default:
       return state;
