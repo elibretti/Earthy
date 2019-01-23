@@ -1,0 +1,32 @@
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 20px 34px; 
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid lightgray;
+}
+
+.earthy-logo{
+    font-family: 'Merriweather', serif;
+    font-size: 36px;
+    color: rgb(26, 155, 9);
+}
+
+
+#login {
+    margin: 0 13px 0 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 6px 8px 6px 8px;
+}
+
+.cart{
+    padding: 0px 8px;
+    border-left: 1px solid lightgray;
+}
+.right-header{
+    display: flex; 
+    height: 34px;
+}

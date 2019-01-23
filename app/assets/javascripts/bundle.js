@@ -273,19 +273,37 @@ function (_React$Component) {
           className: "right-header"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.props.logout
-        }, " Log Out"));
+        }, " Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/shoppingcart",
+          className: "cart"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "shopping-cart",
+          "aria-hidden": "true"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-label"
+        }, "Cart")));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "right-header"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "register",
           onClick: function onClick() {
             return _this.props.openModal("signup");
           }
         }, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "login",
           onClick: function onClick() {
             return _this.props.openModal("login");
           }
-        }, "Sign in"));
+        }, "Sign in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/shoppingcart",
+          className: "cart"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-shopping-cart",
+          "aria-hidden": "true"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-label"
+        }, "Cart")));
       }
     }
   }, {
@@ -295,7 +313,9 @@ function (_React$Component) {
         className: "header-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-header"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "earthy-logo"
+      }, "Earthy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-header"
       }, this.rightHeader()));
     }
