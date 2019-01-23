@@ -1,10 +1,12 @@
+
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-class LoginForm extends React.Component{
+class SignUpForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            first_name:"",
             email: "",
             password: ""
         }
@@ -14,12 +16,12 @@ class LoginForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         const user = Object.assign({}, this.state)
-        this.props.login(user).then(this.props.closeModal)
+        this.props.signup(user).then(this.props.closeModal)
     } 
 
     update(field){
         return (e) => {
-            this.setState({[field]: e.currentTarget.value})
+            this.setState({[field]: e.target.value})
         }
     }
 
@@ -39,7 +41,8 @@ class LoginForm extends React.Component{
             <div>
                 {this.renderErrors()}
                 <form onSubmit={this.handleSubmit} className='login-form'>
-                <h2> Sign in to Continue</h2>
+                <h2>Create your account</h2>
+                <p>Registration is easy.</p>
                 <label>
                     Email address
                     <input type='text' 
@@ -47,12 +50,18 @@ class LoginForm extends React.Component{
                     onChange={this.update("email")}/>
                 </label>
                 <label>
+                    First name
+                    <input type='text' 
+                    value={this.state.first_name} 
+                    onChange={this.update("first_name")}/>
+                </label>
+                <label>
                     Password
                     <input type='password' 
                     value={this.state.password} 
                     onChange={this.update("password")}/>
                 </label>
-                <input type="submit" value="Sign In"/>
+                <input type="submit" value="Register"/>
                 </form>
             </div>
         )
@@ -61,4 +70,4 @@ class LoginForm extends React.Component{
 
 }
 
-export default withRouter(LoginForm);
+export default withRouter(SignUpForm);

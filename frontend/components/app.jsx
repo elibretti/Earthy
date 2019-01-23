@@ -7,20 +7,16 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-
-
+import Modal from './modal/modal_container'
+import HeaderContainer from './header/header_container';
 import LoginFormContainer from './session_form/login_form_container';
-
+import SignUpFormContainer from './session_form/signup_form_container';
 const App = () => (
     <div>
+      <Modal />
       <header>
-        <Link to="/" className="header-link">
-          <h1>Earthy</h1>
-        </Link>
+        <HeaderContainer />
       </header>
-      <Switch>
-        <Route exact path="/login" component={LoginFormContainer} />
-      </Switch>
     </div>
   );
   
