@@ -277,7 +277,7 @@ function (_React$Component) {
           to: "/shoppingcart",
           className: "cart"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "shopping-cart",
+          className: "fa fa-shopping-cart",
           "aria-hidden": "true"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "cart-label"
@@ -881,6 +881,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -888,7 +890,23 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
-  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  var store;
+
+  if (window.currentUser) {
+    var preloadedState = {
+      entities: {
+        users: _defineProperty({}, window.currentUser.id, window.currentUser)
+      },
+      session: {
+        id: window.currentUser.id
+      }
+    };
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  }
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"];

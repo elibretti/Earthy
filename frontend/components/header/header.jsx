@@ -14,7 +14,7 @@ class Header extends React.Component {
                 {/* <button> <img src={defaultImg}/></button> */}
                 <button onClick={this.props.logout}> Log Out</button>
                 <Link to="/shoppingcart" className="cart">
-                    <i className="shopping-cart" aria-hidden="true" />
+                    <i className="fa fa-shopping-cart" aria-hidden="true" />
                     <div className="cart-label">Cart</div>
                 </Link>
             </div>
