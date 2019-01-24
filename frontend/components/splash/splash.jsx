@@ -11,21 +11,21 @@ class Splash extends React.Component {
             <ul className='splash-list'>
                 <li>
                     <h3>
-                        <i class="fas fa-check"> </i>
+                        <i className="fas fa-check"> </i>
                          Eco-conscious everything
                     </h3>
                     <p>We have millions of environmentally friendly items, so you can find whatever you need (or really, really want).</p>
                 </li>
                 <li>
                     <h3>
-                        <i class="fas fa-check"> </i>
+                        <i className="fas fa-check"> </i>
                          Passionate sellers 
                     </h3>
                     <p>Buy directly from someone who truly cares about saving the planet.</p>
                 </li>
                 <li>
                     <h3>
-                        <i class="fas fa-check"> </i>
+                        <i className="fas fa-check"> </i>
                          Trusted technology
                     </h3>
                     <p>We use proven e-commerce platforms to secure your transactions.</p>

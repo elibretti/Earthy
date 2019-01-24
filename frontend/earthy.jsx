@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {login, logout, signup} from './actions/session_actions';
+import {createProduct, updateProduct, fetchProduct, fetchAllProducts, deleteProduct} from './actions/product_actions';
 import configureStore from './store/store';
 import Root from './components/root';
 
@@ -21,5 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+    window.createProduct = createProduct;
+    window.updateProduct = updateProduct;
+    window.fetchProduct = fetchProduct;
+    window.fetchAllProducts = fetchAllProducts;
+    window.deleteProduct = deleteProduct;
     ReactDOM.render(<Root store={store}/>, root)
 })

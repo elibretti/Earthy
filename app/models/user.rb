@@ -1,11 +1,23 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  first_name      :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
     validates :email, :session_token, :password_digest, presence: true
     validates :email, uniqueness:true
     validates :first_name, presence: true 
     validates :password, length:{minimum: 6, allow_nil: true}  
     attr_reader :password
-    after_initialize :ensure_session_token, :ensure_image_url
-
+    after_initialize :ensure_session_token
     has_one_attached :photo
  
     def self.find_by_credentials(email, password) 
@@ -38,8 +50,8 @@ class User < ApplicationRecord
         self.session_token ||= self.class.generate_session_token
     end
 
-    def ensure_image_url
-        self.image_url ||= "default_user.png"
-    end
+    # def ensure_image_url
+    #     self.image_url ||= "default_user.png"
+    # end
 
 end
