@@ -1,0 +1,93 @@
+.session-form-container{
+    background-color: white;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 450px;
+    border-radius: 3px;
+}
+
+.session-form-container h2 {
+   font-size: 26px;
+   font-weight: 500;
+}
+.session-form-container h3 {
+    margin-top: 5px;
+    font-weight: 300;
+    font-size: 14px;
+ }
+
+.session-form-container label {
+    display: block;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 550;
+
+}
+
+#asterisk{
+    color:red;
+    font-weight: 300;
+}
+
+
+.session-form-container input {
+    display: block;
+    height: 30px;
+    width: 300px;
+    padding: 10px; 
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    transition: 1s ease;
+}
+
+.session-form-container input[type='submit'], .demo { 
+    width: 300px;
+    margin: 20px 0;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+    transition: 1s ease;
+
+}
+
+.demo {
+    background: white;
+    border: 1px solid  rgb(26, 155, 9);
+    color: rgb(26, 155, 9);
+    margin-bottom: 0px;
+
+}
+
+.errors li{
+    margin: 5px 0;
+    font-weight: 300;
+    font-size: 14px;
+    color: red;
+}
+
+.session-form-container input:hover {
+    border: 1px solid rgb(32, 32, 32);
+    transition: .5s ease;
+}
+
+.session-form-container input[type='submit']:hover {
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}
+
+
+.demo:hover {
+    background: rgb(26, 155, 9);
+    border: 1px solid  rgb(26, 155, 9);
+    color: white;
+    margin-bottom: 0px;
+    transition: .5s ease;
+}
+

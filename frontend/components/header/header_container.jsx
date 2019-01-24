@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {logout} from '../../actions/session_actions';
+import {logout, login} from '../../actions/session_actions';
 import {openModal} from '../../actions/modal_actions';
 import Header from './header';
 
@@ -12,9 +12,14 @@ const msp = (state) => {
 }
 
 const mdp = () => {
+    const demo = {
+        email: "DemoUser",
+        password: "DemoUser"
+    }
     return {
         openModal: modal => dispatch(openModal(modal)),
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
+        login: () => dispatch(login(demo))
     }
 
 }

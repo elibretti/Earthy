@@ -1,0 +1,45 @@
+
+.splash{
+    margin: 35px
+}
+
+.categories{
+    border-bottom: 1px solid lightgray;
+    height: 30px;
+    margin: 0px;
+}
+.splash h2 {
+    margin: 8px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 300;
+    font-size: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.splash-list{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+.splash-list li {
+    text-align: center;
+    width: 300px;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.splash-list li h3{
+    width: 300px;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.fa-check{
+    color: rgb(26, 155, 9);
+    transform: scale(1, 1.5);
+    margin-right: 5px;
+    -webkit-text-stroke: 2px white;
+
+}

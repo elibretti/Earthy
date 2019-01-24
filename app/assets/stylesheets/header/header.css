@@ -3,30 +3,75 @@
     justify-content: space-between;
     font-size: 14px;
     font-weight: 400;
-    padding: 20px 34px; 
+    padding: 8px 34px 34px 34px; 
     color: rgb(100, 100, 100);
     border-bottom: 1px solid lightgray;
 }
 
 .earthy-logo{
-    font-family: 'Merriweather', serif;
-    font-size: 36px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+    transform: scale(1, .89);
+    font-size: 40px;
     color: rgb(26, 155, 9);
 }
 
 
-#login {
-    margin: 0 13px 0 20px;
+#login, #demo{
+    margin: 0 0 0 20px;
     border: 1px solid black;
     border-radius: 3px;
     padding: 6px 8px 6px 8px;
 }
 
+#demo {
+    border: 1px solid  rgb(26, 155, 9);
+    color: rgb(26, 155, 9);
+}
 .cart{
     padding: 0px 8px;
     border-left: 1px solid lightgray;
+    margin-left: 13px;
 }
 .right-header{
+    padding-top: 8px;
     display: flex; 
     height: 34px;
+}
+.left-header{
+    padding-top: 5px;
+    display: flex; 
+    justify-content: space-between;
+    height: 34px;
+}
+
+.search {
+    margin-left: 10px;
+    padding-top: 12px;
+    display:flex;
+    justify-content: flex-end;
+    width: 315px;
+}
+
+#search-text{
+    width: 100%;
+    top: 50%;
+    border: 1px solid #CFCBC8;
+    background: #f9f9f8;
+    padding: 0px 10px;
+    margin-left: 0;
+    height: 32px;
+    font-size: 14px;
+}
+
+#search-submit{
+    height: 32px;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0 8px;
+    transition: 1s ease;
 }

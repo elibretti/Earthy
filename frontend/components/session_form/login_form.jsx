@@ -8,9 +8,11 @@ class LoginForm extends React.Component{
             email: "",
             password: ""
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+   
     }
-
+ 
     handleSubmit(e){
         e.preventDefault();
         const user = Object.assign({}, this.state)
@@ -23,16 +25,9 @@ class LoginForm extends React.Component{
         }
     }
 
-    handleCheck(){
-            this.state = {
-                email: "DemoUser",
-                password: "DemoUser"
-            }
-    }
-
     renderErrors(){
         return( 
-            <ul> 
+            <ul className="errors"> 
                 {this.props.errors.map( (error, i ) => {
                    return <li key ={`error-${i}`}> {error}</li>
                 })}
@@ -40,10 +35,17 @@ class LoginForm extends React.Component{
         )
     }
 
+    handleClick(){
+        const demo = {
+            email: "DemoUser",
+            password: "DemoUser"
+        }
+        this.props.login(demo).then(this.props.closeModal)
+    }
 
     render(){
         return (
-            <div className='login form-container'>
+            <div className='session-form-container'>
                 {this.renderErrors()}
                 <form onSubmit={this.handleSubmit} className='login form'>
                 <h2> Sign in to Continue</h2>
@@ -62,22 +64,12 @@ class LoginForm extends React.Component{
                     type='password' 
                     value={this.state.password} 
                     onChange={this.update("password")}/>
-                <label htmlFor="checkbox">
-                    Demo Login?
-                </label>
-                <input 
-                    type="checkbox" 
-                    id="checkbox"
-                    onChange={this.handleCheck(this)}
-                    />
-                    <span className="checkmark"></span>
-                    
+                <button className="demo" onClick={this.handleClick}>Demo User</button>
                 <input type="submit" value="Sign In"/>
                 </form>
             </div>
         )
     }
-
 
 }
 

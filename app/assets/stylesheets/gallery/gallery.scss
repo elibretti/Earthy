@@ -1,0 +1,45 @@
+
+
+.gallery{
+    margin-top: 30px;
+}
+.gallery div {
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 320px;
+    position: relative;
+    z-index: 1;
+}
+.gallery p {
+   position: absolute;
+   z-index: 2;
+   height: 270px;
+   width: 210px;
+   background:  rgb(19, 109, 7);
+   color: white;
+   text-align: center;
+   font-size: 32px;
+   font-family: 'Noto Serif SC', serif;
+   font-weight: 300;
+   padding: 40px 20px 10px 20px;
+   -webkit-text-stroke: .5px  rgb(19, 109, 7);
+}
+
+.slide-1{
+    background-image: url('https://s3.amazonaws.com/earthy-dev/slide-1.jpg');
+}
+.slide-2{
+    background-image: url('https://s3.amazonaws.com/earthy-dev/slide-2.jpg');
+}
+.slide-3{
+    background-image: url('https://s3.amazonaws.com/earthy-dev/slide-3.jpg');
+}
+
+.slide-4{
+    background-image: url('https://s3.amazonaws.com/earthy-dev/slide-4.jpg');
+}
+
+.slide-5{
+    background-image: url('https://s3.amazonaws.com/earthy-dev/slide-5.jpg');
+}

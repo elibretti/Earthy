@@ -24,6 +24,7 @@ class Header extends React.Component {
             <div className='right-header'>
                 <button id="register" onClick={() => this.props.openModal("signup") }>Register</button>
                 <button id="login" onClick={() => this.props.openModal("login") }>Sign in</button>
+                <button id="demo" onClick={this.props.login}>Demo User</button>
                 <Link to="/shoppingcart" className="cart">
                     <i className="fa fa-shopping-cart" aria-hidden="true" />
                     <div className="cart-label">Cart</div>
@@ -36,8 +37,15 @@ class Header extends React.Component {
     render(){
         return (
             <div className='header-container'>
+
                 <div className='left-header'>
-                <h1 className="earthy-logo">Earthy</h1>
+                    <h1 className="earthy-logo">Earthy</h1>
+                    <form className='search'> 
+                        <input type='text' 
+                        id='search-text'
+                        placeholder='Search for Items or Shops'/>
+                        <input type='submit'  id='search-submit' value='Search'/>
+                    </form>
                 </div>
                 <div className='right-header'>
                     {this.rightHeader()}

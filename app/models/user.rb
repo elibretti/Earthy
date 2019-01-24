@@ -5,6 +5,8 @@ class User < ApplicationRecord
     validates :password, length:{minimum: 6, allow_nil: true}  
     attr_reader :password
     after_initialize :ensure_session_token, :ensure_image_url
+
+    has_one_attached :photo
  
     def self.find_by_credentials(email, password) 
         @user = User.find_by(email: email)
