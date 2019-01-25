@@ -10,8 +10,8 @@ import {
 import Modal from './modal/modal_container'
 import HeaderContainer from './header/header_container';
 import Splash from './splash/splash';
-import LoginFormContainer from './session_form/login_form_container';
-import SignUpFormContainer from './session_form/signup_form_container';
+import CreateProductContainer from './product/create_product_container';
+import UpdateProductContainer  from './product/update_product_container';
 const App = () => (
     <div>
       <Modal />
@@ -20,6 +20,8 @@ const App = () => (
       </header>
       <div className="categories"> </div> 
       <Route exact path="/" component={Splash} />
+      <Route exact path="/product/new" component={CreateProductContainer} />
+      <Route exact path="/product/:productId/edit" component={UpdateProductContainer} />
     </div>
   );
   

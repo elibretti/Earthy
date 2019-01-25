@@ -5,6 +5,15 @@ export const createProduct = (product) => {
         data: {product}
     })
 }
+export const createFormProduct = (product) => {
+    return $.ajax({
+        method: "POST",
+        url:"api/products",
+        data: product,
+        contentType: false,
+        processData: false
+    })
+}
 
 export const deleteProduct = (id) => {
     return $.ajax({
@@ -32,5 +41,15 @@ export const updateProduct = (product) => {
         method: "PATCH",
         url:`api/products/${product.id}`,
         data: {product}
+    })
+}
+
+export const updateFormProduct = (product) => {
+    return $.ajax({
+        method: "PATCH",
+        url:`api/products/${product.get('product[id]')}`,
+        data: product,
+        contentType: false,
+        processData: false
     })
 }

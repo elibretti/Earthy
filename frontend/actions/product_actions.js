@@ -40,7 +40,14 @@ export const createProduct = (product) => dispatch => {
     return ProductAPIUtil.createProduct(product).then( (product) => {
         return dispatch(receiveProduct(product))
     }, (errors) => {
-        debugger
+        return dispatch(receiveProductErrors(errors.responseJSON))
+    }
+    )
+}
+export const createFormProduct = (product) => dispatch => {
+    return ProductAPIUtil.createFormProduct(product).then( (product) => {
+        return dispatch(receiveProduct(product))
+    }, (errors) => {
         return dispatch(receiveProductErrors(errors.responseJSON))
     }
     )
@@ -82,3 +89,13 @@ export const updateProduct = (product) => dispatch => {
     }
     )
 }
+
+export const updateFormProduct = (product) => dispatch => {
+    return ProductAPIUtil.updateFormProduct(product).then( (product) => {
+        return dispatch(receiveProduct(product))
+    }, (errors) => {
+        return dispatch(receiveProductErrors(errors.responseJSON))
+    }
+    )
+}
+

@@ -12,6 +12,9 @@ class Header extends React.Component {
             return (
             <div className='right-header'>
                 {/* <button> <img src={defaultImg}/></button> */}
+                <Link to="/product/new" className="product">
+                    <div className="cart-label">Sell On Earthy</div>
+                </Link>
                 <button onClick={this.props.logout}> Log Out</button>
                 <Link to="/shoppingcart" className="cart">
                     <i className="fa fa-shopping-cart" aria-hidden="true" />

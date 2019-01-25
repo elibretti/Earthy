@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/product_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_PRODUCT, RECEIVE_ALL_PRODUCTS, RECEIVE_PRODUCT_ERRORS, REMOVE_PRODUCT, createProduct, deleteProduct, fetchProduct, fetchAllProducts, updateProduct */
+/*! exports provided: RECEIVE_PRODUCT, RECEIVE_ALL_PRODUCTS, RECEIVE_PRODUCT_ERRORS, REMOVE_PRODUCT, createProduct, createFormProduct, deleteProduct, fetchProduct, fetchAllProducts, updateProduct, updateFormProduct */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -129,10 +129,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PRODUCT_ERRORS", function() { return RECEIVE_PRODUCT_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PRODUCT", function() { return REMOVE_PRODUCT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFormProduct", function() { return createFormProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProduct", function() { return deleteProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProduct", function() { return fetchProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllProducts", function() { return fetchAllProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFormProduct", function() { return updateFormProduct; });
 /* harmony import */ var _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/product_api_util */ "./frontend/util/product_api_util.js");
 
 var RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
@@ -173,7 +175,15 @@ var createProduct = function createProduct(product) {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["createProduct"](product).then(function (product) {
       return dispatch(receiveProduct(product));
     }, function (errors) {
-      debugger;
+      return dispatch(receiveProductErrors(errors.responseJSON));
+    });
+  };
+};
+var createFormProduct = function createFormProduct(product) {
+  return function (dispatch) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["createFormProduct"](product).then(function (product) {
+      return dispatch(receiveProduct(product));
+    }, function (errors) {
       return dispatch(receiveProductErrors(errors.responseJSON));
     });
   };
@@ -208,6 +218,15 @@ var fetchAllProducts = function fetchAllProducts() {
 var updateProduct = function updateProduct(product) {
   return function (dispatch) {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProduct"](product).then(function (product) {
+      return dispatch(receiveProduct(product));
+    }, function (errors) {
+      return dispatch(receiveProductErrors(errors.responseJSON));
+    });
+  };
+};
+var updateFormProduct = function updateFormProduct(product) {
+  return function (dispatch) {
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["updateFormProduct"](product).then(function (product) {
       return dispatch(receiveProduct(product));
     }, function (errors) {
       return dispatch(receiveProductErrors(errors.responseJSON));
@@ -304,8 +323,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_modal_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal/modal_container */ "./frontend/components/modal/modal_container.jsx");
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./header/header_container */ "./frontend/components/header/header_container.jsx");
 /* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
-/* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
-/* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
+/* harmony import */ var _product_create_product_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./product/create_product_container */ "./frontend/components/product/create_product_container.jsx");
+/* harmony import */ var _product_update_product_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./product/update_product_container */ "./frontend/components/product/update_product_container.jsx");
 
 
 
@@ -322,6 +341,14 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _splash_splash__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/product/new",
+    component: _product_create_product_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/product/:productId/edit",
+    component: _product_update_product_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }));
 };
 
@@ -463,7 +490,12 @@ function (_React$Component) {
       if (this.props.current_user) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "right-header"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/product/new",
+          className: "product"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cart-label"
+        }, "Sell On Earthy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.props.logout
         }, " Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/shoppingcart",
@@ -698,6 +730,323 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_modal__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/product/create_product_container.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/product/create_product_container.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _product_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_form */ "./frontend/components/product/product_form.jsx");
+
+
+
+
+var msp = function msp(state) {
+  var defaultProduct = {
+    title: "",
+    description: "",
+    price: "",
+    userId: state.session.id,
+    photoFile: "",
+    photoUrl: ""
+  };
+  return {
+    product: defaultProduct,
+    formType: "create",
+    errors: state.errors.products
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    processForm: function processForm(product) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["createFormProduct"])(product));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(_product_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/product/product_form.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/product/product_form.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dropzone */ "./node_modules/react-dropzone/dist/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+
+var ProductForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProductForm, _React$Component);
+
+  function ProductForm(props) {
+    var _this;
+
+    _classCallCheck(this, ProductForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductForm).call(this, props));
+    _this.state = _this.props.product;
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.onPhotoDrop = this.onPhotoDrop.bind(this);
+
+    return _this;
+  }
+
+  _createClass(ProductForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.formType === "update") {
+        this.props.fetchProduct(this.props.match.params.productId);
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this2 = this;
+
+      if (this.props.match.params.productId != prevProps.product.id) {
+        this.props.fetchProduct(this.props.match.params.productId).then(function () {
+          _this2.setState(_this2.props.product);
+        });
+      }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('product[title]', this.state.title);
+      formData.append('product[description]', this.state.description);
+      formData.append('product[price]', parseFloat(this.state.price));
+      formData.append('product[user_id]', this.state.userId);
+
+      if (this.state.photoFile) {
+        formData.append('product[photo]', this.state.photoFile);
+      }
+
+      if (this.props.formType === 'update') {
+        formData.append('product[id]', this.state.id);
+      }
+
+      this.props.processForm(formData);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "onPhotoDrop",
+    value: function onPhotoDrop(files) {
+      var _this4 = this;
+
+      var reader = new FileReader();
+      var file = files[0];
+
+      reader.onloadend = function () {
+        return _this4.setState({
+          photoUrl: reader.result,
+          photoFile: file
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({
+          photoUrl: "",
+          photoFile: null
+        });
+      }
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors"
+      }, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "error-".concat(i)
+        }, " ", error);
+      }));
+    }
+  }, {
+    key: "renderPreview",
+    value: function renderPreview() {
+      if (this.state.photoUrl === "") {
+        return null;
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "preview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.state.photoUrl
+        }));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var header;
+      var button;
+
+      if (this.props.formType === 'update') {
+        header = "Update Product";
+        button = "Save";
+      } else {
+        header = "Add a new listing";
+        button = "Create";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "product-header"
+      }, header), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product-image-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-instructions"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Add a photo to attract buyers to your product!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, "Tips:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Use natural light and no flash."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Include a common object for scale"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Show the item being held, worn, or used."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Shoot against a clean, simple background."))), this.renderPreview(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropzone"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropzone__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        accept: "image/*",
+        onDrop: this.onPhotoDrop.bind(this)
+      }, function (_ref) {
+        var getRootProps = _ref.getRootProps,
+            getInputProps = _ref.getInputProps;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getRootProps(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dropzone-text"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-camera",
+          "aria-hidden": "true"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Drag in your photo or click here to upload")));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "product-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Listing details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Tell the planet about your listing!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "title"
+      }, "Title*", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "title",
+        value: this.state.title,
+        onChange: this.update("title")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "description"
+      }, "Description*", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        id: "description",
+        value: this.state.description,
+        onChange: this.update("description")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "price"
+      }, "Price*", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        id: "price",
+        step: "0.01",
+        placeholder: "0.00",
+        value: this.state.price,
+        onChange: this.update("price")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: button
+      })));
+    }
+  }]);
+
+  return ProductForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(ProductForm));
+
+/***/ }),
+
+/***/ "./frontend/components/product/update_product_container.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/product/update_product_container.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _product_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_form */ "./frontend/components/product/product_form.jsx");
+
+
+
+
+var msp = function msp(state, ownProps) {
+  var defaultProduct = {
+    id: "",
+    title: "",
+    description: "",
+    price: "",
+    userId: state.session.id,
+    photoFile: "",
+    photoUrl: ""
+  };
+  var product = state.entities.products[ownProps.match.params.productId] || defaultProduct;
+  return {
+    product: product,
+    formType: 'update',
+    errors: state.errors.products
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    processForm: function processForm(product) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["updateFormProduct"])(product));
+    },
+    fetchProduct: function fetchProduct(id) {
+      return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["fetchProduct"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(_product_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -1540,16 +1889,18 @@ var configureStore = function configureStore() {
 /*!*******************************************!*\
   !*** ./frontend/util/product_api_util.js ***!
   \*******************************************/
-/*! exports provided: createProduct, deleteProduct, fetchAllProducts, fetchProduct, updateProduct */
+/*! exports provided: createProduct, createFormProduct, deleteProduct, fetchAllProducts, fetchProduct, updateProduct, updateFormProduct */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFormProduct", function() { return createFormProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProduct", function() { return deleteProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllProducts", function() { return fetchAllProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProduct", function() { return fetchProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProduct", function() { return updateProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFormProduct", function() { return updateFormProduct; });
 var createProduct = function createProduct(product) {
   return $.ajax({
     method: "POST",
@@ -1557,6 +1908,15 @@ var createProduct = function createProduct(product) {
     data: {
       product: product
     }
+  });
+};
+var createFormProduct = function createFormProduct(product) {
+  return $.ajax({
+    method: "POST",
+    url: "api/products",
+    data: product,
+    contentType: false,
+    processData: false
   });
 };
 var deleteProduct = function deleteProduct(id) {
@@ -1584,6 +1944,15 @@ var updateProduct = function updateProduct(product) {
     data: {
       product: product
     }
+  });
+};
+var updateFormProduct = function updateFormProduct(product) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/products/".concat(product.get('product[id]')),
+    data: product,
+    contentType: false,
+    processData: false
   });
 };
 
@@ -1720,6 +2089,17 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
   return target;
 }
+
+/***/ }),
+
+/***/ "./node_modules/attr-accept/dist/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/attr-accept/dist/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={i:e,l:!1,exports:{}};return t[e].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var r={};return n.m=t,n.c=r,n.d=function(t,r,e){n.o(t,r)||Object.defineProperty(t,r,{configurable:!1,enumerable:!0,get:e})},n.n=function(t){var r=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(r,"a",r),r},n.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},n.p="",n(n.s=13)}([function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports={version:"2.5.0"};"number"==typeof __e&&(__e=r)},function(t,n,r){t.exports=!r(4)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(32)("wks"),o=r(9),i=r(0).Symbol,u="function"==typeof i;(t.exports=function(t){return e[t]||(e[t]=u&&i[t]||(u?i:o)("Symbol."+t))}).store=e},function(t,n,r){var e=r(0),o=r(2),i=r(8),u=r(22),c=r(10),f=function(t,n,r){var a,s,p,l,v=t&f.F,y=t&f.G,h=t&f.S,d=t&f.P,x=t&f.B,g=y?e:h?e[n]||(e[n]={}):(e[n]||{}).prototype,m=y?o:o[n]||(o[n]={}),b=m.prototype||(m.prototype={});y&&(r=n);for(a in r)s=!v&&g&&void 0!==g[a],p=(s?g:r)[a],l=x&&s?c(p,e):d&&"function"==typeof p?c(Function.call,p):p,g&&u(g,a,p,t&f.U),m[a]!=p&&i(m,a,l),d&&b[a]!=p&&(b[a]=p)};e.core=o,f.F=1,f.G=2,f.S=4,f.P=8,f.B=16,f.W=32,f.U=64,f.R=128,t.exports=f},function(t,n,r){var e=r(16),o=r(21);t.exports=r(3)?function(t,n,r){return e.f(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(24);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){var e=r(28),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";n.__esModule=!0,n.default=function(t,n){if(t&&n){var r=Array.isArray(n)?n:n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):n.endsWith("/*")?i===n.replace(/\/.*$/,""):o===n})}return!0},r(14),r(34)},function(t,n,r){r(15),t.exports=r(2).Array.some},function(t,n,r){"use strict";var e=r(7),o=r(25)(3);e(e.P+e.F*!r(33)([].some,!0),"Array",{some:function(t){return o(this,t,arguments[1])}})},function(t,n,r){var e=r(17),o=r(18),i=r(20),u=Object.defineProperty;n.f=r(3)?Object.defineProperty:function(t,n,r){if(e(t),n=i(n,!0),e(r),o)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){var e=r(1);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n,r){t.exports=!r(3)&&!r(4)(function(){return 7!=Object.defineProperty(r(19)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(1),o=r(0).document,i=e(o)&&e(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,r){var e=r(1);t.exports=function(t,n){if(!e(t))return t;var r,o;if(n&&"function"==typeof(r=t.toString)&&!e(o=r.call(t)))return o;if("function"==typeof(r=t.valueOf)&&!e(o=r.call(t)))return o;if(!n&&"function"==typeof(r=t.toString)&&!e(o=r.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(0),o=r(8),i=r(23),u=r(9)("src"),c=Function.toString,f=(""+c).split("toString");r(2).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,c){var a="function"==typeof r;a&&(i(r,"name")||o(r,"name",n)),t[n]!==r&&(a&&(i(r,u)||o(r,u,t[n]?""+t[n]:f.join(String(n)))),t===e?t[n]=r:c?t[n]?t[n]=r:o(t,n,r):(delete t[n],o(t,n,r)))})(Function.prototype,"toString",function(){return"function"==typeof this&&this[u]||c.call(this)})},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,r){var e=r(10),o=r(26),i=r(27),u=r(12),c=r(29);t.exports=function(t,n){var r=1==t,f=2==t,a=3==t,s=4==t,p=6==t,l=5==t||p,v=n||c;return function(n,c,y){for(var h,d,x=i(n),g=o(x),m=e(c,y,3),b=u(g.length),_=0,w=r?v(n,b):f?v(n,0):void 0;b>_;_++)if((l||_ in g)&&(h=g[_],d=m(h,_,x),t))if(r)w[_]=d;else if(d)switch(t){case 3:return!0;case 5:return h;case 6:return _;case 2:w.push(h)}else if(s)return!1;return p?-1:a||s?s:w}}},function(t,n,r){var e=r(5);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n,r){var e=r(11);t.exports=function(t){return Object(e(t))}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(30);t.exports=function(t,n){return new(e(t))(n)}},function(t,n,r){var e=r(1),o=r(31),i=r(6)("species");t.exports=function(t){var n;return o(t)&&(n=t.constructor,"function"!=typeof n||n!==Array&&!o(n.prototype)||(n=void 0),e(n)&&null===(n=n[i])&&(n=void 0)),void 0===n?Array:n}},function(t,n,r){var e=r(5);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){var e=r(0),o=e["__core-js_shared__"]||(e["__core-js_shared__"]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,n,r){"use strict";var e=r(4);t.exports=function(t,n){return!!t&&e(function(){n?t.call(null,function(){},1):t.call(null)})}},function(t,n,r){r(35),t.exports=r(2).String.endsWith},function(t,n,r){"use strict";var e=r(7),o=r(12),i=r(36),u="".endsWith;e(e.P+e.F*r(38)("endsWith"),"String",{endsWith:function(t){var n=i(this,t,"endsWith"),r=arguments.length>1?arguments[1]:void 0,e=o(n.length),c=void 0===r?e:Math.min(o(r),e),f=String(t);return u?u.call(n,f,c):n.slice(c-f.length,c)===f}})},function(t,n,r){var e=r(37),o=r(11);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){var e=r(1),o=r(5),i=r(6)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n,r){var e=r(6)("match");t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(r){try{return n[e]=!1,!"/./"[t](n)}catch(t){}}return!0}}]);
 
 /***/ }),
 
@@ -28886,6 +29266,724 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-dropzone/dist/es/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-dropzone/dist/es/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./node_modules/react-dropzone/dist/es/utils/index.js");
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/* eslint prefer-template: 0 */
+
+
+
+
+
+var Dropzone = function (_React$Component) {
+  _inherits(Dropzone, _React$Component);
+
+  function Dropzone() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Dropzone);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Dropzone.__proto__ || Object.getPrototypeOf(Dropzone)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      draggedFiles: [],
+      acceptedFiles: [],
+      rejectedFiles: []
+    }, _this.isFileDialogActive = false, _this.onDocumentDrop = function (evt) {
+      if (_this.node && _this.node.contains(evt.target)) {
+        // if we intercepted an event for our instance, let it propagate down to the instance's onDrop handler
+        return;
+      }
+      evt.preventDefault();
+      _this.dragTargets = [];
+    }, _this.onDragStart = function (evt) {
+      evt.persist();
+      if (_this.props.onDragStart && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isDragDataWithFiles"])(evt)) {
+        _this.props.onDragStart.call(_this, evt);
+      }
+    }, _this.onDragEnter = function (evt) {
+      evt.preventDefault();
+
+      // Count the dropzone and any children that are entered.
+      if (_this.dragTargets.indexOf(evt.target) === -1) {
+        _this.dragTargets.push(evt.target);
+      }
+
+      evt.persist();
+
+      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isDragDataWithFiles"])(evt)) {
+        Promise.resolve(_this.props.getDataTransferItems(evt)).then(function (draggedFiles) {
+          if (evt.isPropagationStopped()) {
+            return;
+          }
+
+          _this.setState({
+            draggedFiles: draggedFiles,
+            // Do not rely on files for the drag state. It doesn't work in Safari.
+            isDragActive: true
+          });
+        });
+
+        if (_this.props.onDragEnter) {
+          _this.props.onDragEnter.call(_this, evt);
+        }
+      }
+    }, _this.onDragOver = function (evt) {
+      // eslint-disable-line class-methods-use-this
+      evt.preventDefault();
+      evt.persist();
+
+      if (_this.props.onDragOver && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isDragDataWithFiles"])(evt)) {
+        _this.props.onDragOver.call(_this, evt);
+      }
+
+      return false;
+    }, _this.onDragLeave = function (evt) {
+      evt.preventDefault();
+      evt.persist();
+
+      // Only deactivate once the dropzone and all children have been left.
+      _this.dragTargets = _this.dragTargets.filter(function (el) {
+        return el !== evt.target && _this.node.contains(el);
+      });
+      if (_this.dragTargets.length > 0) {
+        return;
+      }
+
+      // Clear dragging files state
+      _this.setState({
+        isDragActive: false,
+        draggedFiles: []
+      });
+
+      if (_this.props.onDragLeave && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isDragDataWithFiles"])(evt)) {
+        _this.props.onDragLeave.call(_this, evt);
+      }
+    }, _this.onDrop = function (evt) {
+      var _this$props = _this.props,
+          onDrop = _this$props.onDrop,
+          onDropAccepted = _this$props.onDropAccepted,
+          onDropRejected = _this$props.onDropRejected,
+          multiple = _this$props.multiple,
+          accept = _this$props.accept,
+          getDataTransferItems = _this$props.getDataTransferItems;
+
+      // Stop default browser behavior
+
+      evt.preventDefault();
+
+      // Persist event for later usage
+      evt.persist();
+
+      // Reset the counter along with the drag on a drop.
+      _this.dragTargets = [];
+      _this.isFileDialogActive = false;
+
+      // Clear files value
+      _this.draggedFiles = null;
+
+      // Reset drag state
+      _this.setState({
+        isDragActive: false,
+        draggedFiles: []
+      });
+
+      if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isDragDataWithFiles"])(evt)) {
+        Promise.resolve(getDataTransferItems(evt)).then(function (fileList) {
+          var acceptedFiles = [];
+          var rejectedFiles = [];
+
+          if (evt.isPropagationStopped()) {
+            return;
+          }
+
+          fileList.forEach(function (file) {
+            if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["fileAccepted"])(file, accept) && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["fileMatchSize"])(file, _this.props.maxSize, _this.props.minSize)) {
+              acceptedFiles.push(file);
+            } else {
+              rejectedFiles.push(file);
+            }
+          });
+
+          if (!multiple && acceptedFiles.length > 1) {
+            // if not in multi mode add any extra accepted files to rejected.
+            // This will allow end users to easily ignore a multi file drop in "single" mode.
+            rejectedFiles.push.apply(rejectedFiles, _toConsumableArray(acceptedFiles.splice(0)));
+          }
+
+          // Update `acceptedFiles` and `rejectedFiles` state
+          // This will make children render functions receive the appropriate
+          // values
+          _this.setState({ acceptedFiles: acceptedFiles, rejectedFiles: rejectedFiles }, function () {
+            if (onDrop) {
+              onDrop.call(_this, acceptedFiles, rejectedFiles, evt);
+            }
+
+            if (rejectedFiles.length > 0 && onDropRejected) {
+              onDropRejected.call(_this, rejectedFiles, evt);
+            }
+
+            if (acceptedFiles.length > 0 && onDropAccepted) {
+              onDropAccepted.call(_this, acceptedFiles, evt);
+            }
+          });
+        });
+      }
+    }, _this.onClick = function (evt) {
+      var _this$props2 = _this.props,
+          onClick = _this$props2.onClick,
+          disableClick = _this$props2.disableClick;
+
+      // if onClick prop is given, run it first
+
+      if (onClick) {
+        onClick.call(_this, evt);
+      }
+
+      // if disableClick is not set and the event hasn't been default prefented within
+      // the onClick listener, open the file dialog
+      if (!disableClick && !evt.isDefaultPrevented()) {
+        evt.stopPropagation();
+
+        // in IE11/Edge the file-browser dialog is blocking, ensure this is behind setTimeout
+        // this is so react can handle state changes in the onClick prop above above
+        // see: https://github.com/react-dropzone/react-dropzone/issues/450
+        if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isIeOrEdge"])()) {
+          setTimeout(_this.open, 0);
+        } else {
+          _this.open();
+        }
+      }
+    }, _this.onInputElementClick = function (evt) {
+      evt.stopPropagation();
+    }, _this.onFileDialogCancel = function () {
+      // timeout will not recognize context of this method
+      var onFileDialogCancel = _this.props.onFileDialogCancel;
+      // execute the timeout only if the FileDialog is opened in the browser
+
+      if (_this.isFileDialogActive) {
+        setTimeout(function () {
+          if (_this.input != null) {
+            // Returns an object as FileList
+            var files = _this.input.files;
+
+
+            if (!files.length) {
+              _this.isFileDialogActive = false;
+
+              if (typeof onFileDialogCancel === 'function') {
+                onFileDialogCancel();
+              }
+            }
+          }
+        }, 300);
+      }
+    }, _this.onFocus = function (evt) {
+      var onFocus = _this.props.onFocus;
+
+      if (onFocus) {
+        onFocus.call(_this, evt);
+      }
+      if (!evt.isDefaultPrevented()) {
+        _this.setState({ isFocused: true });
+      }
+    }, _this.onBlur = function (evt) {
+      var onBlur = _this.props.onBlur;
+
+      if (onBlur) {
+        onBlur.call(_this, evt);
+      }
+      if (!evt.isDefaultPrevented()) {
+        _this.setState({ isFocused: false });
+      }
+    }, _this.onKeyDown = function (evt) {
+      var onKeyDown = _this.props.onKeyDown;
+
+      if (!_this.node.isEqualNode(evt.target)) {
+        return;
+      }
+
+      if (onKeyDown) {
+        onKeyDown.call(_this, evt);
+      }
+
+      if (!evt.isDefaultPrevented() && (evt.keyCode === 32 || evt.keyCode === 13)) {
+        evt.preventDefault();
+        _this.open();
+      }
+    }, _this.composeHandler = function (handler) {
+      if (_this.props.disabled) {
+        return null;
+      }
+      return handler;
+    }, _this.getRootProps = function () {
+      var _extends2;
+
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var _ref2$refKey = _ref2.refKey,
+          refKey = _ref2$refKey === undefined ? 'ref' : _ref2$refKey,
+          onKeyDown = _ref2.onKeyDown,
+          onFocus = _ref2.onFocus,
+          onBlur = _ref2.onBlur,
+          onClick = _ref2.onClick,
+          onDragStart = _ref2.onDragStart,
+          onDragEnter = _ref2.onDragEnter,
+          onDragOver = _ref2.onDragOver,
+          onDragLeave = _ref2.onDragLeave,
+          onDrop = _ref2.onDrop,
+          rest = _objectWithoutProperties(_ref2, ['refKey', 'onKeyDown', 'onFocus', 'onBlur', 'onClick', 'onDragStart', 'onDragEnter', 'onDragOver', 'onDragLeave', 'onDrop']);
+
+      return _extends((_extends2 = {
+        onKeyDown: _this.composeHandler(onKeyDown ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onKeyDown, _this.onKeyDown) : _this.onKeyDown),
+        onFocus: _this.composeHandler(onFocus ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onFocus, _this.onFocus) : _this.onFocus),
+        onBlur: _this.composeHandler(onBlur ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onBlur, _this.onBlur) : _this.onBlur),
+        onClick: _this.composeHandler(onClick ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onClick, _this.onClick) : _this.onClick),
+        onDragStart: _this.composeHandler(onDragStart ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onDragStart, _this.onDragStart) : _this.onDragStart),
+        onDragEnter: _this.composeHandler(onDragEnter ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onDragEnter, _this.onDragEnter) : _this.onDragEnter),
+        onDragOver: _this.composeHandler(onDragOver ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onDragOver, _this.onDragOver) : _this.onDragOver),
+        onDragLeave: _this.composeHandler(onDragLeave ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onDragLeave, _this.onDragLeave) : _this.onDragLeave),
+        onDrop: _this.composeHandler(onDrop ? Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onDrop, _this.onDrop) : _this.onDrop)
+      }, _defineProperty(_extends2, refKey, _this.setNodeRef), _defineProperty(_extends2, 'tabIndex', _this.props.disabled ? -1 : 0), _extends2), rest);
+    }, _this.getInputProps = function () {
+      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var _ref3$refKey = _ref3.refKey,
+          refKey = _ref3$refKey === undefined ? 'ref' : _ref3$refKey,
+          onChange = _ref3.onChange,
+          onClick = _ref3.onClick,
+          rest = _objectWithoutProperties(_ref3, ['refKey', 'onChange', 'onClick']);
+
+      var _this$props3 = _this.props,
+          accept = _this$props3.accept,
+          multiple = _this$props3.multiple,
+          name = _this$props3.name;
+
+      var inputProps = _defineProperty({
+        accept: accept,
+        type: 'file',
+        style: { display: 'none' },
+        multiple: _utils__WEBPACK_IMPORTED_MODULE_2__["supportMultiple"] && multiple,
+        onChange: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onChange, _this.onDrop),
+        onClick: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["composeEventHandlers"])(onClick, _this.onInputElementClick),
+        autoComplete: 'off',
+        tabIndex: -1
+      }, refKey, _this.setInputRef);
+      if (name && name.length) {
+        inputProps.name = name;
+      }
+      return _extends({}, inputProps, rest);
+    }, _this.setNodeRef = function (node) {
+      _this.node = node;
+    }, _this.setInputRef = function (input) {
+      _this.input = input;
+    }, _this.open = function () {
+      _this.isFileDialogActive = true;
+      if (_this.input) {
+        _this.input.value = null;
+        _this.input.click();
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Dropzone, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var preventDropOnDocument = this.props.preventDropOnDocument;
+
+      this.dragTargets = [];
+
+      if (preventDropOnDocument) {
+        document.addEventListener('dragover', _utils__WEBPACK_IMPORTED_MODULE_2__["onDocumentDragOver"], false);
+        document.addEventListener('drop', this.onDocumentDrop, false);
+      }
+
+      window.addEventListener('focus', this.onFileDialogCancel, false);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      var preventDropOnDocument = this.props.preventDropOnDocument;
+
+      if (preventDropOnDocument) {
+        document.removeEventListener('dragover', _utils__WEBPACK_IMPORTED_MODULE_2__["onDocumentDragOver"]);
+        document.removeEventListener('drop', this.onDocumentDrop);
+      }
+
+      window.removeEventListener('focus', this.onFileDialogCancel, false);
+    }
+
+    /**
+     * Open system file upload dialog.
+     *
+     * @public
+     */
+
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          children = _props.children,
+          multiple = _props.multiple,
+          disabled = _props.disabled;
+      var _state = this.state,
+          isDragActive = _state.isDragActive,
+          isFocused = _state.isFocused,
+          draggedFiles = _state.draggedFiles,
+          acceptedFiles = _state.acceptedFiles,
+          rejectedFiles = _state.rejectedFiles;
+
+
+      var filesCount = draggedFiles.length;
+      var isMultipleAllowed = multiple || filesCount <= 1;
+      var isDragAccept = filesCount > 0 && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["allFilesAccepted"])(draggedFiles, this.props.accept);
+      var isDragReject = filesCount > 0 && (!isDragAccept || !isMultipleAllowed);
+
+      return children({
+        isDragActive: isDragActive,
+        isDragAccept: isDragAccept,
+        isDragReject: isDragReject,
+        draggedFiles: draggedFiles,
+        acceptedFiles: acceptedFiles,
+        rejectedFiles: rejectedFiles,
+        isFocused: isFocused && !disabled,
+        getRootProps: this.getRootProps,
+        getInputProps: this.getInputProps,
+        open: this.open
+      });
+    }
+  }]);
+
+  return Dropzone;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Dropzone);
+
+Dropzone.propTypes = {
+  /**
+   * Allow specific types of files. See https://github.com/okonet/attr-accept for more information.
+   * Keep in mind that mime type determination is not reliable across platforms. CSV files,
+   * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
+   * Windows. In some cases there might not be a mime type set at all.
+   * See: https://github.com/react-dropzone/react-dropzone/issues/276
+   */
+  accept: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string)]),
+
+  /**
+   * Render function that renders the actual component
+   *
+   * @param {Object} props
+   * @param {Function} props.getRootProps Returns the props you should apply to the root drop container you render
+   * @param {Function} props.getInputProps Returns the props you should apply to hidden file input you render
+   * @param {Function} props.open Open the native file selection dialog
+   * @param {Boolean} props.isFocused Dropzone area is in focus
+   * @param {Boolean} props.isDragActive Active drag is in progress
+   * @param {Boolean} props.isDragAccept Dragged files are accepted
+   * @param {Boolean} props.isDragReject Some dragged files are rejected
+   * @param {Array} props.draggedFiles Files in active drag
+   * @param {Array} props.acceptedFiles Accepted files
+   * @param {Array} props.rejectedFiles Rejected files
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * Disallow clicking on the dropzone container to open file dialog
+   */
+  disableClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+
+  /**
+   * Enable/disable the dropzone entirely
+   */
+  disabled: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+
+  /**
+   * If false, allow dropped items to take over the current browser window
+   */
+  preventDropOnDocument: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+
+  /**
+   * Allow dropping multiple files
+   */
+  multiple: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+
+  /**
+   * `name` attribute for the input tag
+   */
+  name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+
+  /**
+   * Maximum file size (in bytes)
+   */
+  maxSize: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+
+  /**
+   * Minimum file size (in bytes)
+   */
+  minSize: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+
+  /**
+   * getDataTransferItems handler
+   * @param {Event} event
+   * @returns {Array} array of File objects
+   */
+  getDataTransferItems: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onClick callback
+   * @param {Event} event
+   */
+  onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onFocus callback
+   */
+  onFocus: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onBlur callback
+   */
+  onBlur: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onKeyDown callback
+   */
+  onKeyDown: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * The `onDrop` method that accepts two arguments.
+   * The first argument represents the accepted files and the second argument the rejected files.
+   *
+   * ```javascript
+   * function onDrop(acceptedFiles, rejectedFiles) {
+   *   // do stuff with files...
+   * }
+   * ```
+   *
+   * Files are accepted or rejected based on the `accept` prop.
+   * This must be a valid [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) according to [input element specification](https://www.w3.org/wiki/HTML/Elements/input/file) or a valid file extension.
+   *
+   * Note that the `onDrop` callback will always be called regardless if the dropped files were accepted or rejected.
+   * You can use the `onDropAccepted`/`onDropRejected` props if you'd like to react to a specific event instead of the `onDrop` prop.
+   *
+   * The `onDrop` callback will provide you with an array of [Files](https://developer.mozilla.org/en-US/docs/Web/API/File) which you can then process and send to a server.
+   * For example, with [SuperAgent](https://github.com/visionmedia/superagent) as a http/ajax library:
+   *
+   * ```javascript
+   * function onDrop(acceptedFiles) {
+   *   const req = request.post('/upload')
+   *   acceptedFiles.forEach(file => {
+   *     req.attach(file.name, file)
+   *   })
+   *   req.end(callback)
+   * }
+   * ```
+   */
+  onDrop: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDropAccepted callback
+   */
+  onDropAccepted: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDropRejected callback
+   */
+  onDropRejected: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDragStart callback
+   */
+  onDragStart: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDragEnter callback
+   */
+  onDragEnter: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDragOver callback
+   */
+  onDragOver: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * onDragLeave callback
+   */
+  onDragLeave: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+
+  /**
+   * Provide a callback on clicking the cancel button of the file dialog
+   */
+  onFileDialogCancel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
+};
+
+Dropzone.defaultProps = {
+  preventDropOnDocument: true,
+  disabled: false,
+  disableClick: false,
+  multiple: true,
+  maxSize: Infinity,
+  minSize: 0,
+  getDataTransferItems: _utils__WEBPACK_IMPORTED_MODULE_2__["getDataTransferItems"]
+};
+
+/***/ }),
+
+/***/ "./node_modules/react-dropzone/dist/es/utils/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-dropzone/dist/es/utils/index.js ***!
+  \************************************************************/
+/*! exports provided: supportMultiple, getDataTransferItems, fileAccepted, fileMatchSize, allFilesAccepted, isDragDataWithFiles, isKindFile, onDocumentDragOver, isIeOrEdge, composeEventHandlers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "supportMultiple", function() { return supportMultiple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDataTransferItems", function() { return getDataTransferItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fileAccepted", function() { return fileAccepted; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fileMatchSize", function() { return fileMatchSize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allFilesAccepted", function() { return allFilesAccepted; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDragDataWithFiles", function() { return isDragDataWithFiles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isKindFile", function() { return isKindFile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onDocumentDragOver", function() { return onDocumentDragOver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isIeOrEdge", function() { return isIeOrEdge; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "composeEventHandlers", function() { return composeEventHandlers; });
+/* harmony import */ var attr_accept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! attr-accept */ "./node_modules/attr-accept/dist/index.js");
+/* harmony import */ var attr_accept__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(attr_accept__WEBPACK_IMPORTED_MODULE_0__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+
+
+var supportMultiple = typeof document !== 'undefined' && document && document.createElement ? 'multiple' in document.createElement('input') : true;
+
+function getDataTransferItems(event) {
+  var dataTransferItemsList = [];
+  if (event.dataTransfer) {
+    var dt = event.dataTransfer;
+
+    // NOTE: Only the 'drop' event has access to DataTransfer.files,
+    // otherwise it will always be empty
+    if (dt.files && dt.files.length) {
+      dataTransferItemsList = dt.files;
+    } else if (dt.items && dt.items.length) {
+      // During the drag even the dataTransfer.files is null
+      // but Chrome implements some drag store, which is accesible via dataTransfer.items
+      dataTransferItemsList = dt.items;
+    }
+  } else if (event.target && event.target.files) {
+    dataTransferItemsList = event.target.files;
+  }
+
+  // Convert from DataTransferItemsList to the native Array
+  return Array.prototype.slice.call(dataTransferItemsList);
+}
+
+// Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
+// that MIME type will always be accepted
+function fileAccepted(file, accept) {
+  return file.type === 'application/x-moz-file' || attr_accept__WEBPACK_IMPORTED_MODULE_0___default()(file, accept);
+}
+
+function fileMatchSize(file, maxSize, minSize) {
+  return file.size <= maxSize && file.size >= minSize;
+}
+
+function allFilesAccepted(files, accept) {
+  return files.every(function (file) {
+    return fileAccepted(file, accept);
+  });
+}
+
+function isDragDataWithFiles(evt) {
+  if (!evt.dataTransfer) {
+    return true;
+  }
+  // https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types#file
+  return Array.prototype.some.call(evt.dataTransfer.types, function (type) {
+    return type === 'Files' || type === 'application/x-moz-file';
+  });
+}
+
+function isKindFile(item) {
+  return (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && item !== null && item.kind === 'file';
+}
+
+// allow the entire document to be a drag target
+function onDocumentDragOver(evt) {
+  evt.preventDefault();
+}
+
+function isIe(userAgent) {
+  return userAgent.indexOf('MSIE') !== -1 || userAgent.indexOf('Trident/') !== -1;
+}
+
+function isEdge(userAgent) {
+  return userAgent.indexOf('Edge/') !== -1;
+}
+
+function isIeOrEdge() {
+  var userAgent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.navigator.userAgent;
+
+  return isIe(userAgent) || isEdge(userAgent);
+}
+
+/**
+ * This is intended to be used to compose event handlers
+ * They are executed in order until one of them calls `event.preventDefault()`.
+ * Not sure this is the best way to do this, but it seems legit.
+ * @param {Function} fns the event hanlder functions
+ * @return {Function} the event handler to add to an element
+ */
+function composeEventHandlers() {
+  for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+
+  return function (event) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    return fns.some(function (fn) {
+      fn && fn.apply(undefined, [event].concat(args));
+      return event.defaultPrevented;
+    });
+  };
+}
 
 /***/ }),
 

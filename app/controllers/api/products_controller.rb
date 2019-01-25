@@ -20,6 +20,9 @@ class Api::ProductsController < ApplicationController
 
     def update
         @product = Product.find_by(id: params[:id])
+        if @product.photo != product_params[:photo]
+            @product.photo.purge
+        end
         if @product.update(product_params)
             render 'api/products/show'
         else
@@ -39,7 +42,7 @@ class Api::ProductsController < ApplicationController
 
     private 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :user_id)
+        params.require(:product).permit(:title, :description, :price, :user_id, :photo)
     end
 
 

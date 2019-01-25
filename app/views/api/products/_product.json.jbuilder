@@ -1,4 +1,4 @@
 json.extract! product, :id, :title, :description, :price, :user_id
 if product.photo.attached?
-    json.photo url_for(photo.image)
+    json.photoUrl url_for(product.photo)
 end
