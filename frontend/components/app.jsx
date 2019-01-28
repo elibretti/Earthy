@@ -12,6 +12,8 @@ import HeaderContainer from './header/header_container';
 import Splash from './splash/splash';
 import CreateProductContainer from './product/create_product_container';
 import UpdateProductContainer  from './product/update_product_container';
+import ProductShowContainer from './product/product_show_container';
+import ProductIndexContainer from './product/product_index_container';
 const App = () => (
     <div>
       <Modal />
@@ -19,9 +21,13 @@ const App = () => (
         <HeaderContainer />
       </header>
       <div className="categories"> </div> 
-      <Route exact path="/" component={Splash} />
-      <Route exact path="/product/new" component={CreateProductContainer} />
-      <Route exact path="/product/:productId/edit" component={UpdateProductContainer} />
+      <Switch>
+        <Route exact path="/" component={Splash} />
+        <Route exact path="/products/new" component={CreateProductContainer} />
+        <Route exact path="/products/:productId/edit" component={UpdateProductContainer} />
+        <Route exact path="/products/:productId" component={ProductShowContainer} />
+        <Route exact path="/products" component={ProductIndexContainer} />
+      </Switch>
     </div>
   );
   

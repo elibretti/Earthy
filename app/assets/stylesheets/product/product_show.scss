@@ -1,0 +1,38 @@
+
+.product-show{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-photo {
+    max-width: 535px;
+    max-height: 535px;
+    width: auto;
+    height: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(227,225,223);
+
+}
+.product-description {
+    padding-top: 15px;
+}
+
+.product-description h2 {
+    font-weight: 500;
+}
+.product-left{
+    margin: 0 10px 20px 0;
+    width: 40%;
+}
+
+.product-right {
+    width: 30%;
+    margin-bottom: 20px;
+}
+.product-right h2 {
+    padding-top: 15px;
+    font-weight: 500;
+    font-size: 24px;
+    font-family: 'Noto Serif SC', serif;
+}

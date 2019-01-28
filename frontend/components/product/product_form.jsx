@@ -7,7 +7,7 @@ class ProductForm extends React.Component {
         super(props);
         this.state = this.props.product ;
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+
         // this.onPhotoDrop = this.onPhotoDrop.bind(this);
     }
 
@@ -31,14 +31,20 @@ class ProductForm extends React.Component {
         formData.append('product[title]', this.state.title);
         formData.append('product[description]', this.state.description);
         formData.append('product[price]', parseFloat(this.state.price));
-        formData.append('product[user_id]', this.state.userId);
+        formData.append('product[user_id]', this.state.user_id);
+        if(this.state.photoFile === ""){
+            this.setState({photoFile: null})
+        }
         if (this.state.photoFile) {
           formData.append('product[photo]', this.state.photoFile);
         }
         if(this.props.formType === 'update'){
             formData.append('product[id]', this.state.id);
         }
-        this.props.processForm(formData);
+        this.props.processForm(formData).then(payload =>{
+            return this.props.history.push(`/products/${payload.product.id}`)
+        }
+          );
         
     }
 
@@ -57,7 +63,7 @@ class ProductForm extends React.Component {
         if (file) {
         reader.readAsDataURL(file);
         } else {
-        this.setState({ photoUrl: "", photoFile: null });
+        this.setState({ photoUrl:"", photoFile: null });
         }           
     }
 
@@ -87,13 +93,10 @@ class ProductForm extends React.Component {
 
     render() {
         let header;
-        let button;
         if(this.props.formType === 'update'){
             header = "Update Product";
-            button = "Save";
         }else{
             header = "Add a new listing";
-            button="Create";
         }
         return (
             <div className="product-form-container">
@@ -158,7 +161,7 @@ class ProductForm extends React.Component {
                                 onChange={this.update("price")}/>
                         </label>
 
-                        <input type='submit' value={button}/> 
+                        <input type='submit' value="Save and continue"/> 
                     </form>
             </div>
         )

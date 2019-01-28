@@ -21,10 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.createProduct = createProduct;
-    window.updateProduct = updateProduct;
-    window.fetchProduct = fetchProduct;
-    window.fetchAllProducts = fetchAllProducts;
-    window.deleteProduct = deleteProduct;
     ReactDOM.render(<Root store={store}/>, root)
 })

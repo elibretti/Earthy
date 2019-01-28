@@ -8,7 +8,7 @@ const msp = (state) => {
         title: "",
         description: "",
         price: "",
-        userId: state.session.id,
+        user_id: state.session.id,
         photoFile:"",
         photoUrl: "" 
     

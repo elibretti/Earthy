@@ -1,6 +1,7 @@
-import {updateFormProduct, fetchProduct} from '../../actions/product_actions';
+import {fetchProduct} from '../../actions/product_actions';
 import {connect} from 'react-redux';
-import ProductForm from './product_form';
+import ProductShow from './product_show';
+
 
 const msp = (state, ownProps) => {
     const defaultProduct = {
@@ -8,26 +9,22 @@ const msp = (state, ownProps) => {
         title: "",
         description: "",
         price: "",
-        user_id: state.session.id,
-        photoFile:"",
+        userId: state.session.id,
+        photoFile:null,
         photoUrl: "" 
     
     }
     let product = state.entities.products[ownProps.match.params.productId] || defaultProduct
     return {
         product: product,
-        formType: 'update',
-        errors: state.errors.products 
+        userId: state.session.id
     }
 }
 
-
 const mdp = (dispatch) => {
     return {
-        processForm: (product) => dispatch(updateFormProduct(product)),
         fetchProduct: (id) => dispatch(fetchProduct(id))
     }
 }
 
-
-export default connect(msp, mdp)(ProductForm);
+export default connect(msp, mdp)(ProductShow);

@@ -20,7 +20,7 @@ class Api::ProductsController < ApplicationController
 
     def update
         @product = Product.find_by(id: params[:id])
-        if @product.photo != product_params[:photo]
+        if params[:photo]
             @product.photo.purge
         end
         if @product.update(product_params)
