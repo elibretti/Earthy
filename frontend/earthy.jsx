@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createProduct, updateProduct, fetchProduct, fetchAllProducts, deleteProduct} from './actions/product_actions';
+import {createCartItem, updateCartItem, fetchAllCartItems, deleteCartItem} from './actions/cart_actions';
 import configureStore from './store/store';
 import Root from './components/root';
 
@@ -21,5 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+    window.createCartItem = createCartItem;
+    window.updateCartItem = updateCartItem;
+    window.fetchAllCartItems = fetchAllCartItems;
+    window.deleteCartItem = deleteCartItem;
     ReactDOM.render(<Root store={store}/>, root)
 })
