@@ -9,7 +9,6 @@
     margin: 0px;
 }
 .splash h2 {
-    margin: 8px;
     font-family: 'Noto Serif SC', serif;
     font-weight: 300;
     font-size: 28px;
@@ -19,19 +18,21 @@
 
 .splash-list{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 25px;
 }
 
 .splash-list li {
+
     text-align: center;
-    width: 300px;
+    width: 350px;
     font-weight: 300;
     font-size: 14px;
 }
 
 .splash-list li h3{
-    width: 300px;
+    text-align: center;
+    width: 100%;
     font-weight: 300;
     font-size: 18px;
 }

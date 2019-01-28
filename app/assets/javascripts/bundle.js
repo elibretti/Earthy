@@ -506,7 +506,7 @@ function (_React$Component) {
           to: "/product/new",
           className: "product"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "cart-label"
+          id: "sell"
         }, "Sell On Earthy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.props.logout
         }, " Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

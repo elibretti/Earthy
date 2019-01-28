@@ -1,18 +1,19 @@
 
 
 
-
-.product-index-list {
-    display:flex;
-    flex-wrap: wrap;
-    width: 77%;
-    margin: auto;
+.product-index-container{
+    margin: 35px 20px;
 }
+.product-index-list {
+    padding: 0 40px 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
+}
 .product-index-item{
-    height: 270px;
-    width: 250px;
-    margin: 15px
+    margin:auto;
+    grid-auto-rows: minmax(100px, auto);
+    max-height: 294px;
 }
 .product-index-item .product-title{
     height: 1.2em;
