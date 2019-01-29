@@ -14,8 +14,9 @@ import CreateProductContainer from './product/create_product_container';
 import UpdateProductContainer  from './product/update_product_container';
 import ProductShowContainer from './product/product_show_container';
 import ProductIndexContainer from './product/product_index_container';
+import CartIndexContainer from './cart_item/cart_index_container';
 const App = () => (
-    <div>
+    <div className ="app">
       <Modal />
       <header>
         <HeaderContainer />
@@ -27,6 +28,7 @@ const App = () => (
         <Route exact path="/products/:productId/edit" component={UpdateProductContainer} />
         <Route exact path="/products/:productId" component={ProductShowContainer} />
         <Route exact path="/products" component={ProductIndexContainer} />
+        <Route exact path ="/cart" component={CartIndexContainer}/>
       </Switch>
     </div>
   );

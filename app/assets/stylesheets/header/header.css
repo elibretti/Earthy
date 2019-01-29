@@ -16,7 +16,7 @@
     color: rgb(26, 155, 9);
 }
 
-#sell {
+#sell, #buy{
     margin: 9px 15px 0 0 ;
 }
 

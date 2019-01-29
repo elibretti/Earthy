@@ -1,6 +1,4 @@
 
-
-
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -19,6 +17,7 @@ span, article, footer, time, small {
   background: transparent;
   font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif; 
 }
+
 
 ul {
   list-style: none;
@@ -47,4 +46,8 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+html, body, #root, .app{
+  height: 100%;
 }

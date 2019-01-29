@@ -2,12 +2,13 @@
 
 
 .product-index-container{
-    margin: 35px 20px;
+    margin: 35px 35px;
 }
 .product-index-list {
     padding: 0 40px 0 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-column-gap: 20px;
 
 }
 .product-index-item{

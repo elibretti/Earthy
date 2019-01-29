@@ -6,8 +6,8 @@ class NewCartItem extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            product_id: "",
-            user_id: "",
+            product_id: null,
+            user_id: null,
             quantity: 1
         } 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,7 @@ class NewCartItem extends React.Component {
         this.props.fetchAllCartItems(this.props.user_id)
     }
     componentDidUpdate() {
-        if( this.state.product_id === "" || this.state.user_id === ""){
+        if( this.state.product_id === null || this.state.user_id === null){
             this.setState({product_id: this.props.product_id, user_id: this.props.user_id});
         }
     }
@@ -38,7 +38,7 @@ class NewCartItem extends React.Component {
             this.props.updateCartItem(newState).then(() => this.props.history.push(`/cart`)
             )
         }else{
-            this.props.createCartItem(this.state).then(() => this.props.history.push(`/cart`))
+            this.props.createCartItem(this.state).then( () => this.props.history.push(`/cart`))
         }
 
     }
@@ -65,7 +65,6 @@ class NewCartItem extends React.Component {
                     </label>
                   
                     <input type="submit" value="Add to cart"/>
-    
                 </form>
             </div>
         )

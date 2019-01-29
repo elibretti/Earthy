@@ -42,7 +42,7 @@ class ProductShow extends React.Component{
                 </div>
                 <div className='product-right'>
                     <h2>{product.title}</h2>
-                    <h3>{product.price}</h3>
+                    <h3>${product.price}</h3>
                     <NewCartItemContainer
                         product_id = {product.id}
                     />
