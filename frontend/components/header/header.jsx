@@ -12,7 +12,7 @@ class Header extends React.Component {
             return (
             <div className='right-header'>
                 {/* <button> <img src={defaultImg}/></button> */}
-                <Link to="/product/new" className="product">
+                <Link to="/products/new" className="product">
                     <div id="sell">Sell On Earthy</div>
                 </Link>
                 <Link to="/products" className="product">

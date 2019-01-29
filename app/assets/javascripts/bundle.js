@@ -1123,7 +1123,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "right-header"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/product/new",
+          to: "/products/new",
           className: "product"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "sell"
