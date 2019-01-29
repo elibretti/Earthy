@@ -18,5 +18,9 @@ class Product < ApplicationRecord
         primary_key: :id,
         foreign_key: :user_id,
         class_name: "User"
-
+    has_many :cart_items,
+        primary_key: :id,
+        foreign_key: :product_id,
+        class_name: "CartItem",
+        dependent: :destroy
 end

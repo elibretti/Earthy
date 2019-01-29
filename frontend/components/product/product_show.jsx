@@ -1,15 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-
+import NewCartItemContainer from '../cart_item/new_cart_item_container';
 class ProductShow extends React.Component{
     
     constructor(props){
         super(props);
-        this.state={
-            product_id: "",
-            user_id: "",
-            quantity: ""
-        } 
     }
 
     componentDidMount() {
@@ -47,8 +42,10 @@ class ProductShow extends React.Component{
                 </div>
                 <div className='product-right'>
                     <h2>{product.title}</h2>
-                    <div> newCartItemForm</div>
-                    {/* New shopping cart item form  */}
+                    <h3>${product.price}</h3>
+                    <NewCartItemContainer
+                        product_id = {product.id}
+                    />
                 </div>
             </div>  
         )

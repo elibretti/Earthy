@@ -36,3 +36,36 @@
     font-size: 24px;
     font-family: 'Noto Serif SC', serif;
 }
+.product-right h3 {
+    -webkit-text-stroke: .05px white;
+}
+
+.new-cart-item input[type='submit'] { 
+    width: 300px;
+    margin: 20px 0;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+    transition: 1s ease;
+
+}
+.new-cart-item input[type='submit']:hover {
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}
+
+.item-container-right #quantity {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px 10px;
+    width: 45px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+  }
