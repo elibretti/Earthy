@@ -20,7 +20,7 @@ p1=Product.create(
     price: 24.99,
     user_id: u1.id
 )
-p1.photo.attach(io: File.open(Rails.root.join('app','assets','images','products','bottle1.jpg')),filename:"bottle1.jpg")
+p1.photo.attach(io: File.open(Rails.root.join("app/assets/images/products/bottle1.jpg")),filename:"bottle1.jpg")
 p2=Product.create(
     title:"Premium Glass Reusable Water Bottle",
     description: "GREAT LOOKING, DURABLE, LEAD-FREE BEVERAGE BOTTLES WITH EXTRA-WIDE MOUTH: Your freshly squeezed juices look beautiful on your table & in your fridge in these classy air-tight, eco-friendly bottles. They are also ideal for keeping water, drinks, brew, coffee, tea, sauces, salad dressing, kefir, fermented drinks ready to go anytime. BE HEALTHY, WHEREVER YOU GO: It’s easier than ever to take your healthy homemade juices and smoothies with you when you carry them in your Brieftons glass bottles.",
