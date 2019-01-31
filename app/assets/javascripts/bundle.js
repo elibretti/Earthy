@@ -1622,7 +1622,7 @@ function (_React$Component) {
       var formData = new FormData();
       formData.append('product[title]', this.state.title);
       formData.append('product[description]', this.state.description);
-      formData.append('product[price]', parseFloat(this.state.price));
+      formData.append('product[price]', parseFloat(this.state.price).toFixed(2));
       formData.append('product[user_id]', this.state.user_id);
 
       if (this.state.photoFile === "") {
@@ -1756,7 +1756,7 @@ function (_React$Component) {
         id: "price",
         step: "0.01",
         placeholder: "0.00",
-        value: this.state.price,
+        value: this.state.price.toFixed(2),
         onChange: this.update("price")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -1827,6 +1827,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var products = this.props.products.map(function (product) {
+        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: product.id,
           product: product
@@ -1874,7 +1875,6 @@ var msp = function msp(state) {
 var mdp = function mdp(dispatch) {
   var checkpath = function checkpath() {
     if (window.location.hash === "#/products") {
-      debugger;
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_0__["fetchAllProducts"])());
     } else if (window.location.hash === "#/search") {
       return dispatch({
@@ -1911,6 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProductIndexItem = function ProductIndexItem(_ref) {
   var product = _ref.product;
+  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "product-index-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1921,7 +1922,7 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
     src: product.photoUrl
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product-title"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, product.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.seller.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", product.price)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, product.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.seller.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", product.price.toFixed(2))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductIndexItem);
@@ -2016,7 +2017,7 @@ function (_React$Component) {
         product_id: product.id
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", product.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cart_item_new_cart_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, product.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", product.price.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cart_item_new_cart_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         product_id: product.id
       })));
     }

@@ -30,7 +30,7 @@ class ProductForm extends React.Component {
         const formData = new FormData();
         formData.append('product[title]', this.state.title);
         formData.append('product[description]', this.state.description);
-        formData.append('product[price]', parseFloat(this.state.price));
+        formData.append('product[price]', parseFloat(this.state.price).toFixed(2));
         formData.append('product[user_id]', this.state.user_id);
         if(this.state.photoFile === ""){
             this.setState({photoFile: null})
@@ -157,7 +157,7 @@ class ProductForm extends React.Component {
                                 id="price"
                                 step='0.01' 
                                 placeholder='0.00'
-                                value={this.state.price} 
+                                value={this.state.price.toFixed(2)} 
                                 onChange={this.update("price")}/>
                         </label>
 

@@ -14,6 +14,7 @@ class ProductIndex extends React.Component {
 
     render() {
         const products = this.props.products.map((product) => {
+            debugger
             return(
                 <ProductIndexItem
                     key={product.id}
@@ -21,8 +22,6 @@ class ProductIndex extends React.Component {
                 />
             )
         })
-
-
         return (
             <div className='product-index-container'>
                 <ul className='product-index-list'>
