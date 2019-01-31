@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import NewCartItemContainer from '../cart_item/new_cart_item_container';
+import ReviewIndexContainer from '../reviews/review_index_container';
 class ProductShow extends React.Component{
     
     constructor(props){
@@ -25,10 +26,9 @@ class ProductShow extends React.Component{
 
     render() {
         const { product } = this.props;
-        if (!product) {
+        if (!product.id) {
           return <div>Loading...</div>;
         }
-
         return (
             <div className='product-show'>
                 <div className="product-left">
@@ -39,6 +39,9 @@ class ProductShow extends React.Component{
                         <h2>Description</h2>
                         <p>{product.description}</p>
                     </div>
+                    <ReviewIndexContainer
+                        product_id={product.id}
+                    />
                 </div>
                 <div className='product-right'>
                     <h2>{product.title}</h2>

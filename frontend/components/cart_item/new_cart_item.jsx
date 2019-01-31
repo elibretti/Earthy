@@ -7,17 +7,18 @@ class NewCartItem extends React.Component {
         super(props);
         this.state={
             product_id: null,
-            user_id: null,
             quantity: 1
         } 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
+        if(this.props.user_id){
         this.props.fetchAllCartItems(this.props.user_id)
+        }
     }
     componentDidUpdate() {
-        if( this.state.product_id === null || this.state.user_id === null){
-            this.setState({product_id: this.props.product_id, user_id: this.props.user_id});
+        if( this.state.product_id === null  ){
+            this.setState({product_id: this.props.product_id});
         }
     }
     
@@ -31,16 +32,19 @@ class NewCartItem extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if(this.props.ItemInCart){
-            let newState = Object.assign({}, this.state);
-            newState.id = this.props.ItemInCart.id;
-            newState.quantity = parseInt(this.state.quantity) + parseInt(this.props.ItemInCart.quantity);
-            this.props.updateCartItem(newState).then(() => this.props.history.push(`/cart`)
-            )
+        if(!this.props.user_id){
+            this.props.openModal("login")
         }else{
-            this.props.createCartItem(this.state).then( () => this.props.history.push(`/cart`))
+            if(this.props.ItemInCart){
+                let newState = Object.assign({}, this.state);
+                newState.id = this.props.ItemInCart.id;
+                newState.quantity = parseInt(this.state.quantity) + parseInt(this.props.ItemInCart.quantity);
+                this.props.updateCartItem(newState).then(() => this.props.history.push(`/cart`)
+                )
+            }else{
+                this.props.createCartItem(this.state).then( () => this.props.history.push(`/cart`))
+            }
         }
-
     }
 
 

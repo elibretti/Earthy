@@ -53,3 +53,12 @@ export const updateFormProduct = (product) => {
         processData: false
     })
 }
+
+export const searchProducts = (query) => {
+    return $.ajax({
+        method: "GET",
+        url: "api/products/search",
+        data: {query}
+
+    })
+}

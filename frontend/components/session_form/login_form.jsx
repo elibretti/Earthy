@@ -17,6 +17,7 @@ class LoginForm extends React.Component{
         e.preventDefault();
         const user = Object.assign({}, this.state)
         this.props.login(user).then(this.props.closeModal)
+        this.props.clearErrors
     } 
 
     update(field){
@@ -43,6 +44,11 @@ class LoginForm extends React.Component{
         this.props.login(demo).then(this.props.closeModal)
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+    
+
     render(){
         return (
             <div className='session-form-container'>
@@ -66,6 +72,7 @@ class LoginForm extends React.Component{
                     onChange={this.update("password")}/>
                 <button className="demo" onClick={this.handleClick}>Demo User</button>
                 <input type="submit" value="Sign In"/>
+                <button id="session-alt" onClick={() => this.props.openModal()}>or Sign Up</button>
                 </form>
             </div>
         )

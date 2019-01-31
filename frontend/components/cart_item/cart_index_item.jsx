@@ -19,7 +19,6 @@ class CartIndexItem extends React.Component{
     }
 
     // handleSubmit(e){
-    //     debugger
     //     e.preventDefault();
     //     this.props.updateCartItem(this.state);
     // }

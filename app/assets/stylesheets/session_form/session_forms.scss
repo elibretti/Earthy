@@ -53,7 +53,7 @@
     border-radius: 3px;
     padding: 8px;
     transition: 1s ease;
-
+    margin-bottom: 50px;
 }
 
 .demo {
@@ -91,3 +91,9 @@
     transition: .5s ease;
 }
 
+#session-alt{
+    display: block;
+    float: right;
+    margin-bottom: 20px;
+    color: rgb(85, 84, 84)
+}

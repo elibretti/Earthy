@@ -2,6 +2,7 @@ import {createCartItem, updateCartItem, fetchAllCartItems} from '../../actions/c
 import {ItemInCart} from '../../reducers/selector';
 import {connect} from 'react-redux';
 import NewCartItem from './new_cart_item';
+import {openModal} from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
     return {
@@ -17,8 +18,9 @@ const mdp = (dispatch) => {
     return {
         createCartItem: (cartItem) => dispatch(createCartItem(cartItem)),
         updateCartItem: (cartItem) => dispatch(updateCartItem(cartItem)),
-        fetchAllCartItems: (id) => dispatch(fetchAllCartItems(id))
+        fetchAllCartItems: (id) => dispatch(fetchAllCartItems(id)),
+        openModal: modal => dispatch(openModal(modal)),
     }
 }
 
-export default connect(msp, mdp)(NewCartItem)
+export default connect(msp, mdp)(NewCartItem);

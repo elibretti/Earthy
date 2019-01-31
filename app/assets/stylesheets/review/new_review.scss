@@ -1,0 +1,132 @@
+.new-review-container{
+    background: white;
+    margin: auto;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    width: 78%;
+    padding-bottom: 30px;
+    margin-top: 150px;
+}
+
+.close-review{
+    background: #FBFBFA;
+    border-bottom: 1px solid rgb(227,225,223);
+    display: flex;
+    justify-content: space-between;
+}
+.close-review h2, .close-review i{
+    margin: 15px 30px 15px 20px;
+}
+.close-review h2{
+    font-weight: 600;
+    font-size:14px;
+    -webkit-text-stroke: .02px white;
+}
+.close-review i {
+    color: rgb(90, 88, 88);
+}
+.review-product-info{
+    display:flex;
+    margin: 20px 20px;
+}
+
+.review-photo{
+    height: 70px;
+    width: 70px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.review-photo img{
+    max-height: 70px;
+    max-width: 70px;
+    height:auto;
+    width:auto;
+    margin: auto;
+}
+.review-product-info h2 {
+    margin-left: 10px;
+    font-size: 15px;
+    -webkit-text-stroke: .03px white;
+
+}
+
+.review-form {
+    margin: 20px 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(227,225,223);
+}
+
+.review-form h1, .review-form h2{
+    font-weight: 600;
+    font-size:14px;
+    -webkit-text-stroke: .01px white;
+}
+.review-rating {
+    margin: 20px 0;
+    width: 290px;
+}
+
+.review-rating span{
+    font-size: 24px;
+    -webkit-text-stroke: .1px white;
+    padding-right: 2px;
+}
+
+.review-form p {
+    margin-top: 10px;
+    font-size: 15px;
+    -webkit-text-stroke: .03px white;
+}
+
+#review-body{
+    width: 95%;
+    margin: 20px 0;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 10px;
+}
+.review-buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#review-submit{ 
+    font-weight: 600;
+    font-size:14px;
+    -webkit-text-stroke: .02px black;
+    margin: 20px ;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 12px 8px;
+    transition: 1s ease;
+
+}
+
+#review-submit:hover {
+    -webkit-text-stroke: .02px rgb(85, 84, 84);
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}
+
+#review-cancel{
+    height: 41px;
+    font-weight: 600;
+    font-size:14px;
+    -webkit-text-stroke: .02px white;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 0 8px;
+}
+
+#review-cancel:hover{
+    -webkit-text-stroke: .02px #FBFBFA;
+    background: #FBFBFA;
+    border: 1px solid lightgray;
+    transition: .2s ease;
+}

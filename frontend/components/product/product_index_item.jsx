@@ -11,7 +11,7 @@ const ProductIndexItem = ({product}) => {
                 <div className='product-title'>
                 <h1>{product.title}</h1>
                 </div>
-                <h2>{product.author.first_name}</h2>
+                <h2>{product.seller.first_name}</h2>
                 <h3>${product.price}</h3>
             </Link>
         </li>

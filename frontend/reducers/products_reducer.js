@@ -1,4 +1,4 @@
-import {RECEIVE_PRODUCT, RECEIVE_ALL_PRODUCTS, REMOVE_PRODUCT} from '../actions/product_actions';
+import {RECEIVE_PRODUCT, RECEIVE_ALL_PRODUCTS, REMOVE_PRODUCT, RECEIVE_PRODUCT_SEARCH} from '../actions/product_actions';
 import merge from 'lodash/merge';
 
 const productsReducer = (state = {}, action) => {
@@ -11,6 +11,12 @@ const productsReducer = (state = {}, action) => {
             let newState = merge({}, state);
             delete newState[action.productId];
             return newState;
+        case RECEIVE_PRODUCT_SEARCH: 
+            if(!action.results){
+                return {}
+            } else {
+                return action.results;
+            }
         default: 
             return state;
     }

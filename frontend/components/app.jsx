@@ -29,6 +29,7 @@ const App = () => (
         <Route exact path="/products/:productId" component={ProductShowContainer} />
         <Route exact path="/products" component={ProductIndexContainer} />
         <Route exact path ="/cart" component={CartIndexContainer}/>
+        <Route path ="/search" component={ProductIndexContainer}/>
       </Switch>
     </div>
   );

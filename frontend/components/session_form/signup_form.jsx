@@ -17,6 +17,7 @@ class SignUpForm extends React.Component{
         e.preventDefault();
         const user = Object.assign({}, this.state)
         this.props.signup(user).then(this.props.closeModal)
+        this.props.clearErrors()
     } 
 
     update(field){
@@ -35,7 +36,10 @@ class SignUpForm extends React.Component{
         )
     }
 
-
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+    
     render(){
         return (
             <div className='session-form-container'>
@@ -65,6 +69,7 @@ class SignUpForm extends React.Component{
                     value={this.state.password} 
                     onChange={this.update("password")}/>
                 <input type="submit" value="Register"/>
+                <button  id="session-alt" onClick={() => this.props.openModal()}>or Login</button>
                 </form>
             </div>
         )

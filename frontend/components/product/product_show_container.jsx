@@ -1,11 +1,11 @@
 import {fetchProduct} from '../../actions/product_actions';
 import {connect} from 'react-redux';
 import ProductShow from './product_show';
-
+import {openModal} from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
     const defaultProduct = {
-        id: "",
+        id: null,
         title: "",
         description: "",
         price: "",
@@ -23,7 +23,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
     return {
-        fetchProduct: (id) => dispatch(fetchProduct(id))
+        fetchProduct: (id) => dispatch(fetchProduct(id)),
     }
 }
 

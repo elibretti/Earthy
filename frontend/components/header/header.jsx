@@ -1,17 +1,17 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-// import defaultImg from '../../../app/assets/images/default_user.png'
-
+import SearchBarContainer from '../search/search_bar_container';
 class Header extends React.Component {
     constructor(props){
         super(props)
     }
 
+    
+
     rightHeader(){
         if(this.props.current_user){
             return (
             <div className='right-header'>
-                {/* <button> <img src={defaultImg}/></button> */}
                 <Link to="/products/new" className="product">
                     <div id="sell">Sell On Earthy</div>
                 </Link>
@@ -31,10 +31,10 @@ class Header extends React.Component {
                 <button id="register" onClick={() => this.props.openModal("signup") }>Register</button>
                 <button id="login" onClick={() => this.props.openModal("login") }>Sign in</button>
                 <button id="demo" onClick={this.props.login}>Demo User</button>
-                <Link to="/cart" className="cart">
+                <button  onClick={() => this.props.openModal("login") } className="cart">
                     <i className="fa fa-shopping-cart" aria-hidden="true" />
                     <div className="cart-label">Cart</div>
-                </Link>
+                </button>
             </div>
             )
         }
@@ -48,12 +48,7 @@ class Header extends React.Component {
                     <Link to="/">
                         <h1 className="earthy-logo">Earthy</h1>
                     </Link>
-                    <form className='search'> 
-                        <input type='text' 
-                        id='search-text'
-                        placeholder='Search for Items or Shops'/>
-                        <input type='submit'  id='search-submit' value='Search'/>
-                    </form>
+                    <SearchBarContainer/>
                 </div>
                 <div className='right-header'>
                     {this.rightHeader()}

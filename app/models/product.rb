@@ -14,7 +14,7 @@
 class Product < ApplicationRecord
     validates :title, :description, :price, :user_id, presence: true
     has_one_attached :photo
-    belongs_to :author,
+    belongs_to :seller,
         primary_key: :id,
         foreign_key: :user_id,
         class_name: "User"
@@ -22,5 +22,11 @@ class Product < ApplicationRecord
         primary_key: :id,
         foreign_key: :product_id,
         class_name: "CartItem",
+        dependent: :destroy
+
+    has_many :reviews,
+        primary_key: :id,
+        foreign_key: :product_id,
+        class_name: "Review",
         dependent: :destroy
 end
