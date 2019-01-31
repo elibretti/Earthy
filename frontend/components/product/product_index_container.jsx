@@ -12,7 +12,6 @@ const msp = (state) => {
 const mdp = (dispatch) => {
     const checkpath = () => {
         if(window.location.hash === "#/products"){
-            debugger
             return dispatch(fetchAllProducts());
         }else if (window.location.hash === "#/search"){
             return  dispatch({type: "null_action"});

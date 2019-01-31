@@ -40,7 +40,6 @@ class Api::ProductsController < ApplicationController
     end
 
     def search 
-        debugger
         search_query = params[:query].downcase
         @products = Product.all.select do |product|
             title = product.title.downcase
