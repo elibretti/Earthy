@@ -1,5 +1,6 @@
 import {deleteCartItem, updateCartItem, fetchAllCartItems} from '../../actions/cart_actions';
 import {connect} from 'react-redux';
+import {openModal} from '../../actions/modal_actions';
 import CartIndex from './cart_index';
 
 const itemsSort = (items) => {
@@ -25,7 +26,8 @@ const mdp = (dispatch) => {
     return {
         deleteCartItem: (id) => dispatch(deleteCartItem(id)),
         updateCartItem: (cartItem) => dispatch(updateCartItem(cartItem)),
-        fetchAllCartItems: (user_id) => dispatch(fetchAllCartItems(user_id))
+        fetchAllCartItems: (user_id) => dispatch(fetchAllCartItems(user_id)),
+        openThankYou: () => dispatch(openModal('thankyou')),
 
     }
 }

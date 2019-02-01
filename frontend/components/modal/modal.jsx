@@ -3,6 +3,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignUpFormContainer from '../session_form/signup_form_container';
 import NewReviewContainer from '../reviews/new_review_container';
 import EditReviewContainer from '../reviews/edit_review_container';
+import ThankYou from '../thank_you/thank_you_container';
 class Modal extends React.Component {
     constructor(props){
         super(props);
@@ -25,6 +26,9 @@ class Modal extends React.Component {
                 break;
             case 'edit-review':
                 component = <EditReviewContainer/>
+                break;
+            case 'thankyou':
+                component = <ThankYou/>
                 break;
             default:
                 return null;

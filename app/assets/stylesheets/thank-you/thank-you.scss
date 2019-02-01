@@ -1,0 +1,50 @@
+.thank-you{
+    height:400px;
+    width:400px;
+    background-image: url("https://s3.amazonaws.com/earthy-dev/user6.jpg");
+    background-size: cover;
+    padding: 70px;
+    border-radius: 50%;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thank-you-border{
+    padding: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(26, 155, 9);
+    background: white;
+}
+.thank-you .earthy-logo{
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+#thank-you-greeting{
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+    transform: scale(1, .89);
+    font-size: 22px;
+    margin: 30px 0;
+}
+
+#thank-you-return{
+    width: 200px;
+    margin: 30px auto;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+    transition: 1s ease;
+    margin-bottom: 50px;
+}
+
+#thank-you-return:hover{
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}

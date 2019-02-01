@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import CartIndexItem from './cart_index_item';
 
@@ -74,9 +73,7 @@ class CartIndex extends React.Component {
                             <h3>Shipping</h3>
                             <p>Free</p>
                         </div>
-                        <Link to='/'>
-                            <button id="checkout">Proceed to checkout</button>
-                        </Link>
+                        <button id="checkout" onClick={() => this.props.openThankYou()}>Proceed to checkout</button>
                     </div>
                 </div>
             </div>

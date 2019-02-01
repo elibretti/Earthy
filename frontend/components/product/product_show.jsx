@@ -30,8 +30,15 @@ class ProductShow extends React.Component{
           return <div>Loading...</div>;
         }
         return (
-            <div className='product-show'>
+            <div className='product-show-container'>
+                <div className="product-show">
                 <div className="product-left">
+                    <div className="product-seller-container">
+                        <div className="seller-photo-container">
+                                <img className="seller-image" src={product.userPhoto}/>
+                        </div>
+                        <h2>{product.seller.first_name}</h2>
+                    </div>
                     <div className="product-photo">
                         <img src={product.photoUrl} />
                     </div>
@@ -50,6 +57,7 @@ class ProductShow extends React.Component{
                     <NewCartItemContainer
                         product_id = {product.id}
                     />
+                </div>
                 </div>
             </div>  
         )

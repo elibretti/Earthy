@@ -64,7 +64,9 @@ class NewCartItem extends React.Component {
             <div className="new-cart-item">
                 {this.renderErrors()}
                 <form className="new-cart-item-form" onSubmit={this.handleSubmit}>
+                    <p>Free Shipping to United States</p>
                     <label htmlFor="quantity">
+                    <p>Quantity</p>
                     <input id="quantity" type="number"  onChange={this.update('quantity')} min="1" max="100" value={this.state.quantity}/>
                     </label>
                   
