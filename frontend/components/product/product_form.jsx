@@ -157,7 +157,7 @@ class ProductForm extends React.Component {
                                 id="price"
                                 step='0.01' 
                                 placeholder='0.00'
-                                value={this.state.price.toFixed(2)} 
+                                value={this.state.price} 
                                 onChange={this.update("price")}/>
                         </label>
 

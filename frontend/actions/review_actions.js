@@ -5,7 +5,7 @@ export const RECEIVE_ALL_REVIEWS = "RECEIVE_ALL_REVIEWS";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
 
-const receiveReview = (review) => {
+export const receiveReview = (review) => {
     return {
         type: RECEIVE_REVIEW,
         review

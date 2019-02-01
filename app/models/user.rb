@@ -17,7 +17,7 @@ class User < ApplicationRecord
     validates :first_name, presence: true 
     validates :password, length:{minimum: 6, allow_nil: true}  
     attr_reader :password
-    after_initialize :ensure_session_token
+    after_initialize :ensure_session_token, :ensure_photo
     has_one_attached :photo
     has_many :products,
         primary_key: :id,
@@ -63,8 +63,8 @@ class User < ApplicationRecord
         self.session_token ||= self.class.generate_session_token
     end
 
-    # def ensure_image_url
-    #     self.image_url ||= "default_user.png"
-    # end
+    def ensure_photo
+        self.photo.attached? || self.photo.attach(io: File.open("app/assets/images/default_user.png"),filename:"default_user.jpg")
+    end
 
 end

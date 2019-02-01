@@ -7,6 +7,11 @@
     border-bottom: 1px solid lightgray;
     height: 30px;
     margin: 0px;
+    text-align: center;
+    color: rgb(19, 109, 7);
+}
+.categories:hover{
+    text-decoration: underline;
 }
 .splash h2 {
     font-family: 'Noto Serif SC', serif;

@@ -41,6 +41,7 @@ class ProductShow extends React.Component{
                     </div>
                     <ReviewIndexContainer
                         product_id={product.id}
+                        user_id={this.props.userId}
                     />
                 </div>
                 <div className='product-right'>

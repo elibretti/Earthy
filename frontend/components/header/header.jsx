@@ -1,12 +1,17 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import SearchBarContainer from '../search/search_bar_container';
+import DropDownContainer from '../dropdown/dropdown-container';
 class Header extends React.Component {
     constructor(props){
         super(props)
+        this.handClick = this.handleClick.bind(this)
     }
 
-    
+    handleClick(){
+        this.props.login()
+        this.props.history.push("/")
+    }
 
     rightHeader(){
         if(this.props.current_user){
@@ -15,10 +20,7 @@ class Header extends React.Component {
                 <Link to="/products/new" className="product">
                     <div id="sell">Sell On Earthy</div>
                 </Link>
-                <Link to="/products" className="product">
-                    <div id="buy">All Products</div>
-                </Link>
-                <button onClick={this.props.logout}> Log Out</button>
+                <DropDownContainer/>
                 <Link to="/cart" className="cart">
                     <i className="fa fa-shopping-cart" aria-hidden="true" />
                     <div className="cart-label">Cart</div>
@@ -30,7 +32,7 @@ class Header extends React.Component {
             <div className='right-header'>
                 <button id="register" onClick={() => this.props.openModal("signup") }>Register</button>
                 <button id="login" onClick={() => this.props.openModal("login") }>Sign in</button>
-                <button id="demo" onClick={this.props.login}>Demo User</button>
+                <button id="demo" onClick={() => this.handleClick()}>Demo User</button>
                 <button  onClick={() => this.props.openModal("login") } className="cart">
                     <i className="fa fa-shopping-cart" aria-hidden="true" />
                     <div className="cart-label">Cart</div>

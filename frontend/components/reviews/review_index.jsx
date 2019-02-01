@@ -12,7 +12,9 @@ class ReviewIndex extends React.Component {
         this.props.fetchAllReviews(this.props.product_id)
     }
 
-
+    componentWillUnmount(){
+        this.props.receiveReview({})
+    }
     editableReview(){
         if(!this.props.user_review.id){
             return null
@@ -41,7 +43,8 @@ class ReviewIndex extends React.Component {
         let reviews = this.props.reviews.map((review) => {
             if(review.user_id === this.props.user_id){
                 if(!this.props.user_review.id){
-                    this.props.updateReview(review)
+                    
+                    this.props.receiveReview(review)
                 }
                 hasReviewed = true;
             }else
@@ -58,7 +61,7 @@ class ReviewIndex extends React.Component {
         }
 
         let newReviewButton; 
-        if(hasReviewed){
+        if(hasReviewed || !this.props.user_id){
            newReviewButton = null;
         }else{
             newReviewButton =  <button id="new-review" onClick={() => this.props.openModal("new-review") }> Leave a Review</button>

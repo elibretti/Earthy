@@ -9,16 +9,27 @@ Product.delete_all
 User.delete_all 
 
 u1=User.create!(email:'DemoUser', first_name:'DemoUser', password: 'DemoUser')
-u2=User.create!(email:'Mary123@gmail.com', first_name:'Mary', password: 'DemoUser')
-u3=User.create!(email:'Chris123@gmail.com', first_name:'Chris', password: 'DemoUser')
-u4=User.create!(email:'George123@gmail.com', first_name:'George', password: 'DemoUser')
-u5=User.create!(email:'Sarah123@gmail.com', first_name:'Sarah', password: 'DemoUser')
+u2=User.create!(email:'greenpath', first_name:'GreenPath', password: 'DemoUser')
+u3=User.create!(email:'ecolove', first_name:'EcoLove', password: 'DemoUser')
+u4=User.create!(email:'i<3earth', first_name:'i<3earth', password: 'DemoUser')
+u5=User.create!(email:'leaftree', first_name:'LeafTree', password: 'DemoUser')
+u6=User.create!(email:'nowastewonders', first_name:'NoWasteWonders', password: 'DemoUser')
+u7=User.create!(email:'theplanetpeople', first_name:'ThePlanetPeople', password: 'DemoUser')
+u8=User.create!(email:'peace4theworld', first_name:'Peace4TheWorld', password: 'DemoUser')
+u1.photo.attach(io: File.open("app/assets/images/user_pics/user1.jpg"),filename:"user1.jpg")
+u2.photo.attach(io: File.open("app/assets/images/user_pics/user2.jpg"),filename:"user2.jpg")
+u3.photo.attach(io: File.open("app/assets/images/user_pics/user3.jpg"),filename:"user3.jpg")
+u4.photo.attach(io: File.open("app/assets/images/user_pics/user4.jpg"),filename:"user4.jpg")
+u5.photo.attach(io: File.open("app/assets/images/user_pics/user5.jpg"),filename:"user5.jpg")
+u6.photo.attach(io: File.open("app/assets/images/user_pics/user6.jpg"),filename:"user6.jpg")
+u7.photo.attach(io: File.open("app/assets/images/user_pics/user7.jpg"),filename:"user7.jpg")
+u8.photo.attach(io: File.open("app/assets/images/user_pics/user8.jpg"),filename:"user8.jpg")
 
 p1=Product.create(
     title:"Healthy Human Stainless Steel Vacuum Insulated Water Bottle - Lilac",
     description:   "WILL THIS BOTTLE CHANGE YOUR LIFE? Maybe, if you're the type of person that obsesses about water bottles (like we are). Water is life. We couldn't find the perfect water bottle so we made it! A Healthy Human water bottle will keep your water so cold, you'll feel like you're guzzling glacial meltwater. A refreshing escape if you're stuck in bumper to bumper traffic or after a heart-pumping workout.",
     price: 24.99,
-    user_id: u1.id
+    user_id: u2.id
 )
 p1.photo.attach(io: File.open(Rails.root.join("app/assets/images/products/bottle1.jpg")),filename:"bottle1.jpg")
 p2=Product.create(
@@ -55,7 +66,7 @@ p6=Product.create(
 
     We've distilled the best parts of our classic notebooks into 3.5 x 5.5 ReWrite. The distinctive rounded corners, perfect binding and perforated pages make this miniature version of the ReWrite recycled notebooks a great choice for capturing spur-of-the-moment ideas, taking notes at meetings or your honey-do list.",
     price:3.49,
-    user_id:u1.id
+    user_id:u4.id
 )
 p6.photo.attach(io: File.open("app/assets/images/products/notebook1.jpg"),filename:"notebook1.jpg")
 p7=Product.create(
@@ -72,3 +83,88 @@ p8=Product.create(
     user_id: u3.id
 )
 p8.photo.attach(io: File.open("app/assets/images/products/bowl1.jpg"),filename:"bowl1.jpg")
+p9=Product.create(
+    title: "Biodegradable Dental Floss With a Refillable Glass Holder | Naturally Waxed With Candelilla Wax | 100% Compostable",
+    description:"THE ECO-FRIENDLY CHOICE - Our floss is perfect for all of you who are trying to take or are already taking a more eco-friendly approach on the world. Good on you! With this offer you get one glass bottle floss holder with one spool of 100% silk floss that is 33 yards long. The glass container is refillable and you can use for as long as you please. The packaging can go straight to your compost pile as it's made of Kraft paper, compostable transparent stickers and printed with soybean ink.",
+    price:9.99,
+    user_id: u6.id
+)
+p9.photo.attach(io: File.open("app/assets/images/products/floss.jpg"),filename:"floss.jpg")
+p10=Product.create(
+    title: "Wowe Natural Organic Bamboo Toothbrush Eco-Friendly Wood",
+    description:"KEEP ALL THOSE PLASTIC toothbrushes out of the oceans and landfills. These bamboo toothbrushes are a great way to help keep the earth green.
+    A PACK OF 4 TOOTHBRUSHES will last one person a full year. Buy a pack of 4 toothbrushes for each person in your household.
+    BPA FREE BRISTLES are soft and made from high quality nylon
+    ",
+    price:10.97,
+    user_id: u7.id
+)
+p10.photo.attach(io: File.open("app/assets/images/products/toothbrush.jpg"),filename:"toothbrush.jpg")
+p11=Product.create(
+    title: "Vegan Reusable Food Wrap NO Beeswax - 100% Plant Based.",
+    description: "USABLE PLASTIC WRAP ALTERNATIVE - Reducing and reusing is the way to move to a zero waste home. Our Reusable wrap food vegan set are a Cling wrap alternative hence a zero waste wrap. Natural alternative to single use plastic and doubles up as a sustainable food wrap. You get flamingo design, cactus design and animal & plant design. New designs coming soon.",
+    price:15.85,
+    user_id: u8.id
+)
+p11.photo.attach(io: File.open("app/assets/images/products/foodwrap.jpg"),filename:"foodwrap.jpg")
+
+r1=Review.create(
+    body:"The color of this water bottle is perfect! i'm aboslutely obsessed!",
+    user_id: u2.id,
+    product_id: p1.id,
+    rating: 5,
+)
+r2=Review.create(
+    body:"I would never use anything else!",
+    user_id: u3.id,
+    product_id: p1.id,
+    rating:5
+)
+r3=Review.create(
+    body:"soooooo durable has lasted me almost 6 years",
+    user_id: u4.id,
+    product_id: p2.id,
+    rating:5
+)
+r4=Review.create(
+    body:"would've given it 5 stars but it broke and shattered everywhere",
+    user_id: u5.id,
+    product_id: p2.id,
+    rating:3
+)
+r5=Review.create(
+    body:"not worth the money!!!!!!",
+    user_id: u6.id,
+    product_id: p3.id,
+    rating:3
+)
+r6=Review.create(
+    body:"WOW keeps my coffee hot for HOURS!!!! Buying 1 for everyone I know!",
+    user_id: u7.id,
+    product_id: p3.id,
+    rating:5
+)
+r7=Review.create(
+    body:"I keep this straw in my purse at all time! easy to wash!",
+    user_id: u2.id,
+    product_id: p4.id,
+    rating:5
+)
+r8=Review.create(
+    body:"Save the turtles!!!!!!",
+    user_id: u3.id,
+    product_id: p4.id,
+    rating:5
+)
+r9=Review.create(
+    body:"Got it as a gift! SO CUTE!!",
+    user_id: u4.id,
+    product_id: p5.id,
+    rating:5
+)
+r9=Review.create(
+    body:"ADORABLE!!!! LOVE THE COLOR",
+    user_id: u5.id,
+    product_id: p5.id,
+    rating:5
+)

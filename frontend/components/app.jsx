@@ -21,7 +21,11 @@ const App = () => (
       <header>
         <HeaderContainer />
       </header>
-      <div className="categories"> </div> 
+      <div className="categories"> 
+            <Link to="/products" className="product">
+                    <div id="buy">All Products</div>
+            </Link>
+      </div> 
       <Switch>
         <Route exact path="/" component={Splash} />
         <Route exact path="/products/new" component={CreateProductContainer} />

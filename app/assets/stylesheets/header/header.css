@@ -31,11 +31,17 @@
     border: 1px solid  rgb(26, 155, 9);
     color: rgb(26, 155, 9);
 }
-.cart{
+.cart, .user-button{
     padding: 0px 8px;
+    height: 42px;
     border-left: 1px solid lightgray;
     margin-left: 13px;
     text-align: center;
+}
+
+.cart i {
+    padding-top: 5px;
+    font-size: 20px;
 }
 .right-header{
     padding-top: 8px;
@@ -78,4 +84,24 @@
     border-bottom-right-radius: 3px;
     padding: 0 8px;
     transition: 1s ease;
+}
+
+.you-image-container {
+    height: 25px;
+    width: 25x;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.you-image-container img{
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.you-label{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(100, 100, 100);
 }

@@ -7,7 +7,7 @@ const ReviewIndexItem = ({review}) => {
     return(
         <li className="review-index-item">
             <div className="review-image-container">
-                <img src="https://s3.amazonaws.com/earthy-dev/default_user.png"/>
+                <img src={review.userPhoto}/>
             </div>
             <div className="review-info-container">
                 <div className="review-item-header">
