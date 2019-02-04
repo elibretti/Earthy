@@ -1199,7 +1199,7 @@ function (_React$Component) {
   _createClass(DropDown, [{
     key: "toggleMenu",
     value: function toggleMenu() {
-      document.getElementById("myDropdown").classList.toggle("show");
+      document.getElementById("user-menu").classList.toggle("show");
     }
   }, {
     key: "handleClick",
@@ -1213,7 +1213,7 @@ function (_React$Component) {
       var _this = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown"
+        className: "user-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.toggleMenu,
         className: "user-button"
@@ -1225,8 +1225,8 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "you-label"
       }, "You")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "myDropdown",
-        className: "dropdown-content"
+        id: "user-menu",
+        className: "menu-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "logout",
         onClick: function onClick() {

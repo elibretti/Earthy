@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 class DropDown extends React.Component {
 
     toggleMenu(){
-        document.getElementById("myDropdown").classList.toggle("show");
+        document.getElementById("user-menu").classList.toggle("show");
     }
 
     handleClick(){
@@ -15,14 +15,14 @@ class DropDown extends React.Component {
     
     render(){
         return(
-            <div className="dropdown">
+            <div className="user-menu">
                 <button onClick={this.toggleMenu} className="user-button">
                         <div className="you-image-container">
                             <img className="you-image" src={this.props.current_user.photoUrl}/>
                         </div>
                         <div className="you-label">You</div>
                 </button>
-                <div id="myDropdown" className="dropdown-content">
+                <div id="user-menu" className="menu-content">
                     <button id="logout" onClick={() => this.handleClick()}>Logout</button>
                 </div>
             </div>
