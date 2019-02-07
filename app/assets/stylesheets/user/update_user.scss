@@ -1,0 +1,97 @@
+.update-user-container {
+    margin: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.update-user-header{
+    width: 75%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.update-user-header h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+.update-user-header p{
+    color:  rgb(85, 84, 84);
+    margin-left: 10px;
+}
+.user-form{
+    width: 75%;
+    font-size: 12px;
+}
+.update-user-info{
+    border: 1px solid rgb(227,225,223);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.update-user-info #input-container {
+    border-bottom: 1px solid rgb(227,225,223);
+    display: flex;
+    padding: 20px 10px;
+}
+
+#input-container:last-child{
+    border: none;
+}
+.update-user-info #input-container label {
+    width: 115px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+#input-container #gender-inputs label{
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.user-preview {
+    padding:0;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 1px solid black;
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+.user-preview img{
+    margin: 0;
+    border-radius: 50%;
+}
+
+.user-form input[type='text'], .user-form textarea {
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
+#city{
+    width: 70%;
+}
+
+.user-form input[type='submit']{ 
+    margin-top: 20px;
+    width: 300px;
+    background: black;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+    transition: 1s ease;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.user-form  input[type='submit']:hover {
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}
+
+

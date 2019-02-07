@@ -62,3 +62,11 @@ export const searchProducts = (query) => {
 
     })
 }
+
+export const fetchProductCategory = (name) => {
+    return $.ajax({
+        method: "GET",
+        url: "api/products/category",
+        data: {category:{name}}
+    })
+}

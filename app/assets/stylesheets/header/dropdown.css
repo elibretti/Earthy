@@ -6,12 +6,12 @@
     cursor: pointer;
   }
 
-  .user-menu {
+  .menu-content {
     position: relative;
     display: inline-block;
   }
   
-  .user-menu {
+  .menu-content {
     display: none;
     position: absolute;
     background-color: white;

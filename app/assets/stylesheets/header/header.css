@@ -67,6 +67,8 @@
     width: 100%;
     top: 50%;
     border: 1px solid #CFCBC8;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
     background: #f9f9f8;
     padding: 0px 10px;
     margin-left: 0;

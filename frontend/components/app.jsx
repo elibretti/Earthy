@@ -15,17 +15,15 @@ import UpdateProductContainer  from './product/update_product_container';
 import ProductShowContainer from './product/product_show_container';
 import ProductIndexContainer from './product/product_index_container';
 import CartIndexContainer from './cart_item/cart_index_container';
+import CategoryContainer from './category/category_container';
+import UpdateUserContainer from './user/update_user_container';
 const App = () => (
     <div className ="app">
       <Modal />
       <header>
         <HeaderContainer />
+        <CategoryContainer />
       </header>
-      <div className="categories"> 
-            <Link to="/products" className="product">
-                    <div id="buy">All Products</div>
-            </Link>
-      </div> 
       <Switch>
         <Route exact path="/" component={Splash} />
         <Route exact path="/products/new" component={CreateProductContainer} />
@@ -34,6 +32,8 @@ const App = () => (
         <Route exact path="/products" component={ProductIndexContainer} />
         <Route exact path ="/cart" component={CartIndexContainer}/>
         <Route path ="/search" component={ProductIndexContainer}/>
+        <Route path ="/category" component={ProductIndexContainer}/>
+        <Route path ='/user/edit' component={UpdateUserContainer}/>
       </Switch>
     </div>
   );

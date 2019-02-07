@@ -109,3 +109,8 @@
     margin-right: 30px;
 }
 
+.product-form  input[type='submit']:hover {
+    background: rgb(85, 84, 84);
+    border: 1px solid rgb(85, 84, 84);
+    transition: .2s ease;
+}

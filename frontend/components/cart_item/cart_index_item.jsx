@@ -13,8 +13,7 @@ class CartIndexItem extends React.Component{
 
     update(field) {
         return (e) => {
-            this.setState({[field]: e.target.value});
-            setTimeout(() => this.props.updateCartItem(this.state), 10);        
+            this.setState({[field]: e.target.value}, () => this.props.updateCartItem(this.state));   
         }
     }
 

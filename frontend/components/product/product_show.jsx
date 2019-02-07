@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import NewCartItemContainer from '../cart_item/new_cart_item_container';
 import ReviewIndexContainer from '../reviews/review_index_container';
 class ProductShow extends React.Component{
@@ -29,6 +29,10 @@ class ProductShow extends React.Component{
         if (!product.id) {
           return <div>Loading...</div>;
         }
+        let editable = null;
+        if(product.seller.id === this.props.userId){
+            editable = <Link to={`/products/${product.id}/edit`} className="edit"> Edit</Link>;
+        }
         return (
             <div className='product-show-container'>
                 <div className="product-show">
@@ -53,6 +57,7 @@ class ProductShow extends React.Component{
                 </div>
                 <div className='product-right'>
                     <h2>{product.title}</h2>
+                    <p>{editable}</p>
                     <h3>${product.price.toFixed(2)}</h3>
                     <NewCartItemContainer
                         product_id = {product.id}

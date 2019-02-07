@@ -7,8 +7,6 @@ class ProductForm extends React.Component {
         super(props);
         this.state = this.props.product ;
         this.handleSubmit = this.handleSubmit.bind(this);
-
-        // this.onPhotoDrop = this.onPhotoDrop.bind(this);
     }
 
     componentDidMount(){

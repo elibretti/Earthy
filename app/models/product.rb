@@ -12,7 +12,9 @@
 #
 
 class Product < ApplicationRecord
-    validates :title, :description, :price, :user_id, presence: true
+    validates :title, :description, :price, :user_id, :category, presence: true
+    validates :category, inclusion: { in: %w(kitchen cleaning health office food), 
+                                    message: "%{value} is not a valid category"}
     has_one_attached :photo
     belongs_to :seller,
         primary_key: :id,

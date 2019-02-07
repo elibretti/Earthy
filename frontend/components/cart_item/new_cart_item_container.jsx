@@ -1,5 +1,5 @@
 import {createCartItem, updateCartItem, fetchAllCartItems} from '../../actions/cart_actions';
-import {ItemInCart} from '../../reducers/selector';
+import {ItemInCart} from '../../util/selector';
 import {connect} from 'react-redux';
 import NewCartItem from './new_cart_item';
 import {openModal} from '../../actions/modal_actions';

@@ -1,0 +1,12 @@
+
+.categories{
+    border-bottom: 1px solid lightgray;
+    height: 30px;
+    margin: 0px;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+.categories button:hover{
+    text-decoration: underline;
+}

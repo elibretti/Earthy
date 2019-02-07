@@ -38,7 +38,7 @@ window.onclick = function(event) {
         !event.target.matches('.you-image') &&
         !event.target.matches('.you-label') 
         ){
-      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var dropdowns = document.getElementsByClassName("menu-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];

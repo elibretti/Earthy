@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Gallery from '../gallery/gallery'
-
+import RecentProductsContainer from '../product/recent_products_container';
 class Splash extends React.Component {
     render(){
         return (
@@ -32,6 +32,7 @@ class Splash extends React.Component {
                 </li>
             
             </ul>
+            <RecentProductsContainer />
         </div>
         );
     }

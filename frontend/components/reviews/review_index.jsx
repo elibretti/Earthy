@@ -6,6 +6,7 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component {
     constructor(props){
         super(props);
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount(){
@@ -14,6 +15,10 @@ class ReviewIndex extends React.Component {
 
     componentWillUnmount(){
         this.props.receiveReview({})
+    }
+
+    handleDelete(){
+        this.props.deleteReview(this.props.user_review)
     }
     editableReview(){
         if(!this.props.user_review.id){
@@ -27,7 +32,7 @@ class ReviewIndex extends React.Component {
                     />
                     <div className="modify-review">
                         <button id="edit-review" onClick={() => this.props.openModal("edit-review") }>Edit</button>
-                        <button id="delete-review" onClick={() => this.props.deleteReview(review)}>Delete</button>
+                        <button id="delete-review" onClick={this.handleDelete }>Delete</button>
                     </div>
                  </div>
                  )

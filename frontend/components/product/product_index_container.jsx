@@ -13,7 +13,7 @@ const mdp = (dispatch) => {
     const checkpath = () => {
         if(window.location.hash === "#/products"){
             return dispatch(fetchAllProducts());
-        }else if (window.location.hash === "#/search"){
+        }else{
             return  dispatch({type: "null_action"});
         }
     } 
