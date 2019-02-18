@@ -9,6 +9,14 @@ class ReviewIndex extends React.Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
+    averageReview(){
+        let review_sum = 0;
+        this.props.reviews.forEach( (review)=> {
+            review_sum += review.rating
+        });
+        return (review_sum / this.props.reviews.length)
+    }
+
     componentDidMount(){
         this.props.fetchAllReviews(this.props.product_id)
     }
@@ -74,7 +82,20 @@ class ReviewIndex extends React.Component {
         return (
             <div className="review-index">
               {newReviewButton}
-                <h1>Reviews</h1>
+                <div className="review-header"> 
+                    <h1>Reviews</h1>
+                    <div className="average-review">
+                        <Rating 
+                            className="review-index-rating"
+                            emptySymbol="far fa-star"
+                            fullSymbol="fas fa-star"
+                            initialRating={this.averageReview()}
+                            readonly={true}
+                        />
+                        ({reviews.length})
+                    </div>
+                </div>                          
+                
                 <ul className="review-index-list">
                     {this.editableReview()}
                     {reviews}

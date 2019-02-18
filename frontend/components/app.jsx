@@ -17,6 +17,7 @@ import ProductIndexContainer from './product/product_index_container';
 import CartIndexContainer from './cart_item/cart_index_container';
 import CategoryContainer from './category/category_container';
 import UpdateUserContainer from './user/update_user_container';
+import UserShowContainer from './user/user_show_container';
 const App = () => (
     <div className ="app">
       <Modal />
@@ -33,7 +34,8 @@ const App = () => (
         <Route exact path ="/cart" component={CartIndexContainer}/>
         <Route path ="/search" component={ProductIndexContainer}/>
         <Route path ="/category" component={ProductIndexContainer}/>
-        <Route path ='/user/edit' component={UpdateUserContainer}/>
+        <Route path ='/users/edit' component={UpdateUserContainer}/>
+        <Route path ='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
   );

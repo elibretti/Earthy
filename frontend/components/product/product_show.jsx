@@ -37,12 +37,15 @@ class ProductShow extends React.Component{
             <div className='product-show-container'>
                 <div className="product-show">
                 <div className="product-left">
-                    <div className="product-seller-container">
-                        <div className="seller-photo-container">
-                                <img className="seller-image" src={product.userPhoto}/>
+                    <Link to={`/users/${product.seller.id}`}>
+                        <div className="product-seller-container">
+                            
+                            <div className="seller-photo-container">
+                                    <img className="seller-image" src={product.userPhoto}/>
+                            </div>
+                            <h2>{product.seller.first_name}</h2>
                         </div>
-                        <h2>{product.seller.first_name}</h2>
-                    </div>
+                    </Link>
                     <div className="product-photo">
                         <img src={product.photoUrl} />
                     </div>

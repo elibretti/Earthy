@@ -14,6 +14,15 @@
     padding: 6px 8px 6px 8px;
 }
 
+.review-header {
+    display:flex;
+    align-items: baseline;
+}
+
+.average-review{
+    font-size: 14px;
+    padding-left: 10px;
+}
 
 .review-index-item{
     display: flex;
