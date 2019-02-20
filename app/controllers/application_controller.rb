@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+    include ActionController::ImplicitRender
+    include ActionController::Helpers
     protect_from_forgery with: :exception
     helper_method :current_user, :logged_in?
 

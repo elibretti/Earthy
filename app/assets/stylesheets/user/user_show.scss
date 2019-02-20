@@ -1,0 +1,73 @@
+.user-show-top{
+    margin: 30px 0px 55px 55px ;
+    display:flex;
+    justify-content: left;
+    -webkit-text-stroke: .1px white;
+
+}
+
+.user-show-top .profile-picture-container{
+    height: 272px;
+    width: 272px;
+    padding: 0;
+    margin:0 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture {
+    max-height: 272px;
+    max-width: 272px;    
+    height: auto;
+    width: auto;
+}
+
+.user-show-top div{
+    width: 344px;
+    // margin: 0 13px;
+    padding: 0 18px;
+}
+
+.user-about h1{
+    margin-bottom: 15px;
+}
+
+.user-show-top h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.user-info h1{
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+.user-info p {
+    margin-left:20px;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+.user-info #user-city{
+    margin: 6px 0;
+}
+.user-info #user-city i{
+    margin-right: 8px;
+}
+.user-info #birthday{
+    margin-bottom: 30px;
+}
+.user-edit-button {
+    padding:10px 15px;
+    border: 1px solid lightgray;
+    font-weight: 600;
+    font-size: 14px;
+    -webkit-text-stroke: 0px;
+}
+
+.user-edit-button i {
+   margin: 0 10px;
+}
+
+.user-products-container h3{
+    margin-left: 45px;
+}

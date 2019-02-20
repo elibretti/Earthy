@@ -27,8 +27,11 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :user_id,
         class_name: "CartItem"
-        
+    
     has_many :reviews,
+        through: :products
+
+    has_many :authored_reviews,
         primary_key: :id,
         foreign_key: :user_id,
         class_name: "Review"

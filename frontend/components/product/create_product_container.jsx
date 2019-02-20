@@ -9,6 +9,7 @@ const msp = (state) => {
         description: "",
         price: "",
         user_id: state.session.id,
+        category: "default",
         photoFile:"",
         photoUrl: "" 
     

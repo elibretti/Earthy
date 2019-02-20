@@ -57,10 +57,10 @@
 
 .search {
     margin-left: 10px;
-    padding-top: 12px;
+    padding-top: 16px;
     display:flex;
     justify-content: flex-end;
-    width: 315px;
+    width: 345px;
 }
 
 #search-text{
@@ -90,20 +90,27 @@
 
 .you-image-container {
     height: 25px;
-    width: 25x;
+    width: 25px;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
 }
 
+
 .you-image-container img{
     width: auto;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 ;
 }
 
 .you-label{
     font-size: 14px;
     font-weight: 400;
     color: rgb(100, 100, 100);
+}
+
+.user-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

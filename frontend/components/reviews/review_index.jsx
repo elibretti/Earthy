@@ -47,6 +47,24 @@ class ReviewIndex extends React.Component {
              }   
     }
     
+    renderProductRating(){
+        if(this.averageReview()){
+            return (
+                <div className="average-review">
+                <Rating 
+                    className="review-index-rating"
+                    emptySymbol="far fa-star"
+                    fullSymbol="fas fa-star"
+                    initialRating={this.averageReview()}
+                    readonly={true}
+                />
+                ({reviews.length})
+            </div>
+            )
+        }else{
+            return null;
+        }
+    }
 
     render(){
         if (!this.props.reviews) {
@@ -84,16 +102,7 @@ class ReviewIndex extends React.Component {
               {newReviewButton}
                 <div className="review-header"> 
                     <h1>Reviews</h1>
-                    <div className="average-review">
-                        <Rating 
-                            className="review-index-rating"
-                            emptySymbol="far fa-star"
-                            fullSymbol="fas fa-star"
-                            initialRating={this.averageReview()}
-                            readonly={true}
-                        />
-                        ({reviews.length})
-                    </div>
+
                 </div>                          
                 
                 <ul className="review-index-list">

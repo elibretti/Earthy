@@ -27,11 +27,22 @@
     flex-direction: column;
     padding: 10px;
 }
-
+.update-user-info .profile-picture {
+    width: 100%;
+    max-width: none;
+}
+.update-user-info #user-image{
+    margin-bottom: 10px;
+}
 .update-user-info #input-container {
     border-bottom: 1px solid rgb(227,225,223);
     display: flex;
     padding: 20px 10px;
+}
+
+.update-user-info #about {
+    width: 70%;
+    height: 70px;
 }
 
 #input-container:last-child{

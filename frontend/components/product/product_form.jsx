@@ -6,6 +6,7 @@ class ProductForm extends React.Component {
     constructor(props){
         super(props);
         this.state = this.props.product ;
+        this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -27,6 +28,7 @@ class ProductForm extends React.Component {
         e.preventDefault()
         const formData = new FormData();
         formData.append('product[title]', this.state.title);
+        formData.append('product[category]', this.state.category);
         formData.append('product[description]', this.state.description);
         formData.append('product[price]', parseFloat(this.state.price).toFixed(2));
         formData.append('product[user_id]', this.state.user_id);
@@ -88,11 +90,18 @@ class ProductForm extends React.Component {
         }
     }
     
+    handleDelete() {
+        this.props.deleteProduct(this.props.product.id).then(() =>{
+            return this.props.history.push(`/users/${this.props.userId}`)
+        })
+    }
 
     render() {
         let header;
+        let deleteButton;
         if(this.props.formType === 'update'){
-            header = "Update Product";
+            header = "Update Listing";
+            deleteButton = <button onClick = {this.handleDelete} className="deleteButtom"> Delete Listing</button>
         }else{
             header = "Add a new listing";
         }
@@ -144,10 +153,25 @@ class ProductForm extends React.Component {
                         </label>
                         <label htmlFor="description">
                             Description*
-                            <textarea
-                                id='description'
-                                value={this.state.description} 
-                                onChange={this.update("description")}/>
+                            <div id='description'>
+                                <textarea
+                                    value={this.state.description} 
+                                    onChange={this.update("description")}/>
+                            </div>
+                        </label>
+                        <label htmlFor="category">
+                            Category*
+                            <select
+                                id="category"
+                                value={this.state.category} 
+                                onChange={this.update("category")}>
+                                <option value= "default" disabled={true}> --Category-- </option>
+                                <option value="kitchen"> Kitchen </option>
+                                <option value="cleaning"> Cleaning </option>
+                                <option value="health"> Health </option>
+                                <option value="food"> Food </option>
+                                <option value="office"> Office </option>
+                            </select>
                         </label>
                         <label htmlFor="price">
                             Price*
@@ -158,8 +182,10 @@ class ProductForm extends React.Component {
                                 value={this.state.price} 
                                 onChange={this.update("price")}/>
                         </label>
-
-                        <input type='submit' value="Save and continue"/> 
+                        <div className="product-buttons">
+                                {deleteButton}
+                            <input type='submit' value="Save and continue"/> 
+                        </div>
                     </form>
             </div>
         )

@@ -1,5 +1,6 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+
 
 class DropDown extends React.Component {
 
@@ -20,9 +21,18 @@ class DropDown extends React.Component {
                         <div className="you-image-container">
                             <img className="you-image" src={this.props.current_user.photoUrl}/>
                         </div>
-                        <div className="you-label">You</div>
+                        <div className="you-label">You <i className="fas fa-caret-down"></i></div>
                 </button>
                 <div id="user-menu" className="menu-content">
+                    <Link to={`/users/${this.props.current_user.id}`} className="user-link">
+                        <div className="you-image-container">
+                            <img className="you-image" src={this.props.current_user.photoUrl}/>
+                        </div>
+                        <div>
+                            <div className="profile-name">{this.props.current_user.first_name}</div>
+                            <div className="profile-label"><p>View profile</p> <i className="fas fa-angle-right"></i></div>
+                        </div>
+                    </Link>
                     <button id="logout" onClick={() => this.handleClick()}>Logout</button>
                 </div>
             </div>

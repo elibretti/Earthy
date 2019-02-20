@@ -1,0 +1,36 @@
+.footer{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 34px 34px 34px; 
+    border-top: 1px solid lightgray;
+}
+
+.footer h1{
+    font-size: 28px;
+    line-height: 40px;
+    height: 40px;
+}
+.footer p {
+    padding-top:5px;
+    line-height: 40px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.footer div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-footer{
+    margin: 24px 0;
+    padding: 0;
+    font-size: 40px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, .8);
+}
+
+.right-footer a{
+    margin-left: 15px;
+}

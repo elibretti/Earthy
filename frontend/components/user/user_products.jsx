@@ -11,6 +11,9 @@ class UserProducts extends React.Component {
 
     render() {
         const products = this.props.products.map((product) => {
+            if(product.id === this.props.skipProd){
+                return null;
+            }
             return(
                 <ProductIndexItem
                     key={product.id}
@@ -20,7 +23,7 @@ class UserProducts extends React.Component {
         })
         return (
         <div className="user-products-container">
-            <ul>
+            <ul className ="product-index-list">
                 {products}
             </ul>            
         </div>

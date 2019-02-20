@@ -55,7 +55,7 @@ class RecentProducts extends React.Component {
                     </button>
                 </div>
             </div>
-                <ul className='recent-products-list show' id="page-1">
+                <ul className='recent-products-list current' id="page-1">
                     {products.slice(0,5)}
                 </ul>
                 <ul className='recent-products-list' id="page-2">

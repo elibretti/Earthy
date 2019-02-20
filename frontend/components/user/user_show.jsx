@@ -15,9 +15,9 @@ class UserShow extends React.Component {
         if(this.props.user.id === this.props.currentUser){
             
             return (
-            <Link to='/users/edit'>
-                <i className="fas fa-pen"></i> 
-                Edit
+            <Link to='/users/edit' className="user-edit-button">
+                <i className="fas fa-pencil-alt"></i>
+                Edit Profile
                 </Link>
                 )
             
@@ -30,7 +30,7 @@ class UserShow extends React.Component {
     renderCity () {
         if(this.props.user.city){
             return (
-                <p><i className="fas fa-map-marker-alt"></i>{this.props.user.city}</p>
+                <p id="user-city"><i className="fas fa-map-marker-alt"></i>{this.props.user.city}</p>
             )
         }else{
             return null;
@@ -55,8 +55,8 @@ class UserShow extends React.Component {
                 <div className="user-info">
                     <h1>{user.first_name}</h1>
                     {this.renderCity()}
-                    <p>{user.gender}</p>
-                    <p>{user.birth_month} {user.birth_date}</p>
+                    <p id="gender">{user.gender}</p>
+                    <p id="birthday">{user.birth_month} {user.birth_date}</p>
                    {this.renderEditButton()}
                 </div>
                 <div className="user-about">
@@ -64,9 +64,11 @@ class UserShow extends React.Component {
                     <p>{user.about}</p>
                 </div>
             </div>
-
-            <UserProducts
-                userId={user.id}/>
+            <div className="user-products-container">
+                <h3>Your Listings</h3>
+                <UserProducts
+                    userId={user.id}/>
+            </div>
         </div>
         )
     }

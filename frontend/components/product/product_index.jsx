@@ -11,6 +11,12 @@ class ProductIndex extends React.Component {
         this.props.action()
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.category !== this.props.category){
+            this.props.action()
+        }
+    }
+
 
     render() {
         const products = this.props.products.map((product) => {

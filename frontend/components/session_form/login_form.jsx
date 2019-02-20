@@ -38,7 +38,7 @@ class LoginForm extends React.Component{
 
     handleClick(){
         const demo = {
-            email: "DemoUser",
+            email: "GoingGreenIn2019",
             password: "DemoUser"
         }
         this.props.login(demo).then(this.props.closeModal)

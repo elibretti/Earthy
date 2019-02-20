@@ -13,7 +13,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     const demo = {
-        email: "DemoUser",
+        email: "GoingGreenIn2019",
         password: "DemoUser"
     }
     return {
