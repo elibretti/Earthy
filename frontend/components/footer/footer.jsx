@@ -12,10 +12,10 @@ class Footer extends React.Component {
                 </div>
 
 
-                <div class="right-footer">
-                    <a href="https://www.linkedin.com/in/elizabeth-libretti-350097b0/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/elibretti"><i class="fab fa-github"></i></a>
-                    <a href="https://angel.co/elizabeth-libretti-1?public_profile=1"><i class="fab fa-angellist"></i></a>
+                <div className="right-footer">
+                    <a href="https://www.linkedin.com/in/elizabeth-libretti-350097b0/"><i className="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/elibretti"><i className="fab fa-github"></i></a>
+                    <a href="https://angel.co/elizabeth-libretti-1?public_profile=1"><i className="fab fa-angellist"></i></a>
                 </div>
             </div>
         )

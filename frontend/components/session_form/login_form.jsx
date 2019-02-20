@@ -36,11 +36,13 @@ class LoginForm extends React.Component{
         )
     }
 
-    handleClick(){
+    handleClick(e){
+        e.stopPropagation();
         const demo = {
             email: "GoingGreenIn2019",
             password: "DemoUser"
         }
+        this.props.clearErrors()
         this.props.login(demo).then(this.props.closeModal)
     }
 
