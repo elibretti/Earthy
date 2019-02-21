@@ -6,10 +6,16 @@ export const createReview = (review) => {
     })
 }
 
-export const fetchAllReviews = (product_id) => {
+export const fetchProductReviews = (product_id) => {
     return $.ajax({
         method:"GET",
         url: `api/products/${product_id}/reviews`
+    })
+}
+export const fetchAllReviews = () => {
+    return $.ajax({
+        method:"GET",
+        url: `api/reviews`
     })
 }
 

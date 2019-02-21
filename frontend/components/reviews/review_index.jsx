@@ -18,7 +18,7 @@ class ReviewIndex extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchAllReviews(this.props.product_id)
+        this.props.fetchProductReviews(this.props.product_id)
     }
 
     componentWillUnmount(){

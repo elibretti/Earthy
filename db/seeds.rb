@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.delete_all
 User.delete_all 
+Review.delete_all
 
 u1=User.create!(email:'GoingGreenIn2019', first_name:'GoingGreenIn2019', password: 'DemoUser', gender:"female", birth_month:"July", birth_date:20, city: "Manhattan, NY", about:"Hi! Welcome to my page! My mission is to make it easy for you to access products that are kind to the eco friendly! Take a look around and check out my products! If you have any issues at all please let me know in a review! I hope you enjoy what you find, thanks for supporting me!" )
 u2=User.create!(email:'greenpath', first_name:'GreenPath', password: 'DemoUser', gender:"male", birth_month:"July", birth_date:20, city: "Manhattan, NY", about:"Hi! Welcome to my page! My mission is to make it easy for you to access products that are kind to the eco friendly! Take a look around and check out my products! If you have any issues at all please let me know in a review! I hope you enjoy what you find, thanks for supporting me!" )

@@ -39,3 +39,64 @@
     -webkit-text-stroke: 2px white;
 
 }
+
+
+.blog-container h1{
+    font-size: 28px;
+    font-weight: 500;
+    margin: 35px auto;
+}
+.blog-posts{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    grid-column-gap: 20px;
+
+}
+
+.blog-posts a{
+    grid-auto-rows: minmax(450px, auto);
+    max-height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.blog-posts a h2{
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif; 
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 13px;
+}
+
+.blog-posts a h3{
+    font-weight:400;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.blog-posts a p{
+    font-size: 12px;
+    line-height: 1.7em;
+    -webkit-text-stroke: .1px white;
+
+}
+
+.blog-posts a #thumbnail {
+    height: 330px;
+    width: 430px;  
+}
+
+#blog1 #thumbnail{
+    background-image: url("https://s3.amazonaws.com/earthy-dev/blog2.jpg");
+    background-size: cover;
+}
+
+#blog2 #thumbnail{
+    background-image: url("https://s3.amazonaws.com/earthy-dev/blog1.jpg");
+    background-size: cover;
+}
+
+#blog3 #thumbnail{
+    background-image: url("https://s3.amazonaws.com/earthy-dev/blog3.jpg");
+    background-size: cover;
+}

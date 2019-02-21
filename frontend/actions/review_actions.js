@@ -18,7 +18,6 @@ const receiveAllReviews = (reviews) => {
         reviews
     }
 }
-
 const removeReview = (review) => {
     return {
         type: REMOVE_REVIEW,
@@ -49,8 +48,15 @@ export const deleteReview = (review) => dispatch => {
     })
 }
 
-export const fetchAllReviews = (product_id) => dispatch => {
-    return ReviewAPIUtil.fetchAllReviews(product_id).then( (reviews) => {
+export const fetchProductReviews = (product_id) => dispatch => {
+    return ReviewAPIUtil.fetchProductReviews(product_id).then( (reviews) => {
+        return dispatch(receiveAllReviews(reviews))
+    }, (errors) => {
+        return dispatch(receiveReviewErrors(errors.responseJSON))
+    })
+}
+export const fetchAllReviews = () => dispatch => {
+    return ReviewAPIUtil.fetchAllReviews().then( (reviews) => {
         return dispatch(receiveAllReviews(reviews))
     }, (errors) => {
         return dispatch(receiveReviewErrors(errors.responseJSON))
