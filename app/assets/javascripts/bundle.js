@@ -2679,14 +2679,14 @@ function (_React$Component) {
         this.setState({
           page: 2
         });
-        document.getElementById("page-2").classList.toggle("show");
-        document.getElementById("page-1").classList.remove("show");
+        document.getElementById("page-2").classList.toggle("current");
+        document.getElementById("page-1").classList.remove("current");
       } else {
         this.setState({
           page: 1
         });
-        document.getElementById("page-1").classList.toggle("show");
-        document.getElementById("page-2").classList.remove("show");
+        document.getElementById("page-1").classList.toggle("current");
+        document.getElementById("page-2").classList.remove("current");
       }
     }
   }, {
