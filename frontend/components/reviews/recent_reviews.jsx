@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Rating from 'react-rating';
 
 class RecentReviews extends React.Component {
@@ -10,7 +10,6 @@ class RecentReviews extends React.Component {
     componentDidMount() {
         this.props.action()
     }
-
 
     render() {
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -31,9 +30,15 @@ class RecentReviews extends React.Component {
                         initialRating={review.rating}
                         readonly={true}
                     />
-                <div className="review-body">
-                    {review.body}
-                </div>
+                    <div className="review-body">
+                        {review.body}
+                    </div>
+                    <Link to={`/products/${review.product_id}`} >
+                    <div className="review-product">
+                        <img src={review.productPhoto}/>
+                    </div>
+                    <h3>{review.product}</h3>
+                    </Link>
                 </li>
             )
             
@@ -41,14 +46,12 @@ class RecentReviews extends React.Component {
         )
         return (
             <div className='recent-reviews'>
-            <div className="recent-header"> 
                 <div className="recent-header-left">
-                    <h1>Reviews from happy people</h1>
+                    <h1>Recent reviews from happy people</h1>
                 </div>
                 <ul className="recent-review-list">
                     {recent_review_items}
                 </ul>
-            </div> 
             </div> 
         )
     }

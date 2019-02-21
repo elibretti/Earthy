@@ -19,7 +19,7 @@ const msp = (state) => {
     let happy_reviews = () => {
         let reviews = sorted_reviews();
         let happy_reviews = [];
-        if(reviews.length === 0){
+        if(reviews.length != 10){
             return [];
         }
         

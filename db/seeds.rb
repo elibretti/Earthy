@@ -589,6 +589,24 @@ hp10.photo.attach(io: File.open("app/assets/images/products/health10.jpg"),filen
 
 
 ##kitchen review
+kr9=Review.create(
+    body:"Got it as a gift! SO CUTE!!",
+    user_id: u4.id,
+    product_id: kp5.id,
+    rating:5
+)
+kr9=Review.create(
+    body:"ADORABLE!!!! LOVE THE COLOR",
+    user_id: u5.id,
+    product_id: kp5.id,
+    rating:5
+)
+kr7=Review.create(
+    body:"I keep this straw in my purse at all time! easy to wash!",
+    user_id: u9.id,
+    product_id: kp4.id,
+    rating:5
+)
 kr1=Review.create(
     body:"The color of this water bottle is perfect! i'm aboslutely obsessed!",
     user_id: u4.id,
@@ -625,30 +643,20 @@ kr6=Review.create(
     product_id: kp3.id,
     rating:5
 )
-kr7=Review.create(
-    body:"I keep this straw in my purse at all time! easy to wash!",
-    user_id: u9.id,
-    product_id: kp4.id,
-    rating:5
-)
 kr8=Review.create(
     body:"Save the turtles!!!!!!",
     user_id: u3.id,
     product_id: kp4.id,
     rating:5
 )
-kr9=Review.create(
-    body:"Got it as a gift! SO CUTE!!",
-    user_id: u4.id,
-    product_id: kp5.id,
+cr6=Review.create(
+    body:"i love this product and it does an excellent job of cleaning with no harsh chemicals",
+    user_id: u9.id,
+    product_id: cp3.id,
     rating:5
 )
-kr9=Review.create(
-    body:"ADORABLE!!!! LOVE THE COLOR",
-    user_id: u5.id,
-    product_id: kp5.id,
-    rating:5
-)
+
+
 
 ##cleaning review
 
@@ -682,12 +690,7 @@ cr5=Review.create(
     product_id: cp3.id,
     rating:3
 )
-cr6=Review.create(
-    body:"i love this product and it does an excellent job of cleaning with no harsh chemicals",
-    user_id: u9.id,
-    product_id: cp3.id,
-    rating:5
-)
+
 cr7=Review.create(
     body:"I keep this straw in my purse at all time! easy to wash!",
     user_id: u10.id,

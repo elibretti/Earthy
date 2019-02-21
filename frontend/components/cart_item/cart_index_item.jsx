@@ -1,5 +1,5 @@
 import React from 'react';
-
+import{Link} from 'react-router-dom';
 class CartIndexItem extends React.Component{
     constructor(props){
         super(props);
@@ -39,29 +39,29 @@ class CartIndexItem extends React.Component{
 
     render(){
         let item = this.props.item;
-
         return (
             <li>
-                <h1>{item.seller_name}</h1>
-                <div className="item-container">
-                    <div className="item-container-left">
-                        <div className="cart-image-container">
-                        <img src={item.photoUrl}/>
+                <Link to={`/products/${item.product_id}`}>
+                    <h1>{item.seller_name}</h1>
+                    <div className="item-container">
+                        <div className="item-container-left">
+                            <div className="cart-image-container">
+                            <img src={item.photoUrl}/>
+                            </div>
+                            <div className="item-info">
+                                <h2>{item.title}</h2>
+                                <button onClick={() => this.props.deleteCartItem(this.props.item.id)}>Remove</button>
+                            </div>
                         </div>
-                        <div className="item-info">
-                            <h2>{item.title}</h2>
-                            <button onClick={() => this.props.deleteCartItem(this.props.item.id)}>Remove</button>
+                        <div className="item-container-right">
+                            <input id="quantity" type="number"  onChange={this.update('quantity')} min="1" max="100" value={this.state.quantity}/>
+                            <div className="item-price">
+                                <h3>${this.totalPrice()}</h3>
+                                <p>(${item.price})</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="item-container-right">
-                        <input id="quantity" type="number"  onChange={this.update('quantity')} min="1" max="100" value={this.state.quantity}/>
-                        <div className="item-price">
-                            <h3>${this.totalPrice()}</h3>
-                            <p>(${item.price})</p>
-                        </div>
-                    </div>
-                </div>
-
+                </Link>
             </li>
         )
     }

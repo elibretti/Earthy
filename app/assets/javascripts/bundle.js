@@ -884,6 +884,7 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -903,6 +904,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -964,7 +966,9 @@ function (_React$Component) {
       var _this3 = this;
 
       var item = this.props.item;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.seller_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.product_id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.seller_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-container-left"
@@ -989,7 +993,7 @@ function (_React$Component) {
         value: this.state.quantity
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-price"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", this.totalPrice()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "($", item.price, ")")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", this.totalPrice()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "($", item.price, ")"))))));
     }
   }]);
 
@@ -2999,17 +3003,21 @@ function (_React$Component) {
           readonly: true
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-body"
-        }, review.body));
+        }, review.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/products/".concat(review.product_id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-product"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: review.productPhoto
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, review.product)));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recent-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recent-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recent-header-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Reviews from happy people")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Recent reviews from happy people")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "recent-review-list"
-      }, recent_review_items)));
+      }, recent_review_items));
     }
   }]);
 
@@ -3052,7 +3060,7 @@ var msp = function msp(state) {
     var reviews = sorted_reviews();
     var happy_reviews = [];
 
-    if (reviews.length === 0) {
+    if (reviews.length != 10) {
       return [];
     }
 
@@ -3490,7 +3498,7 @@ var ReviewIndexItem = function ReviewIndexItem(_ref) {
     className: "review-item-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "review-name"
-  }, review.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  }, review.user), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_2___default.a, {
     className: "review-date",
     format: "MMMM D, YYYY"
   }, review.updated_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -3758,7 +3766,6 @@ function (_React$Component) {
         email: "GoingGreenIn2019",
         password: "DemoUser"
       };
-      this.props.clearErrors();
       this.props.login(demo).then(this.props.closeModal);
     }
   }, {
@@ -4117,7 +4124,7 @@ function (_React$Component) {
         className: "fas fa-check"
       }, " "), "Passionate sellers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Buy directly from someone who truly cares about saving the planet.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-check"
-      }, " "), "Trusted technology"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We use proven e-commerce platforms to secure your transactions."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_recent_reviews_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " "), "Trusted technology"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We use proven e-commerce platforms to secure your transactions."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_product_recent_products_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "blog-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Helpful blogs on eco-friendly living"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "blog-posts"
@@ -4136,7 +4143,7 @@ function (_React$Component) {
         id: "blog3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "thumbnail"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Experience Life"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Going Green"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Clear air. Clean water. Clean Earth. What\u2019s good for the planet is good for you! Here\u2019s how to make your life a little more eco-friendly.")))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Experience Life"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Going Green"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Clear air. Clean water. Clean Earth. What\u2019s good for the planet is good for you! Here\u2019s how to make your life a little more eco-friendly.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_recent_reviews_container__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
   }]);
 

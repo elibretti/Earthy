@@ -33,8 +33,7 @@ class Splash extends React.Component {
                 </li>
             
             </ul>
-            {/* <RecentProductsContainer /> */}
-            <RecentReviewsContainer />
+            <RecentProductsContainer />
             <div className="blog-container">
                 <h1>Helpful blogs on eco-friendly living</h1>
                 <div className="blog-posts">
@@ -66,6 +65,7 @@ class Splash extends React.Component {
                 </div>
 
             </div>
+            <RecentReviewsContainer />
         </div>
 
         );

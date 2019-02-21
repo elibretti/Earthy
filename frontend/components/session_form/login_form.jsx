@@ -42,7 +42,6 @@ class LoginForm extends React.Component{
             email: "GoingGreenIn2019",
             password: "DemoUser"
         }
-        this.props.clearErrors()
         this.props.login(demo).then(this.props.closeModal)
     }
 

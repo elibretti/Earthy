@@ -1,0 +1,55 @@
+.recent-review-list{
+    margin-top: 30px;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    grid-column-gap: 20px;
+    width: 100%
+}
+
+.recent-reviews{
+    margin-top: 35px;
+}
+
+.recent-review-list li {
+    grid-auto-rows: minmax(450px, auto);
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recent-review h1{
+    margin-top:10px;
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 15px;
+    -webkit-text-stroke: .05px white;
+    color:  rgb(85, 84, 84);
+}
+.recent-review h1 span{
+    font-weight: bold;
+    color: black;
+}
+.review-body{
+    margin-bottom: 30px;
+    height: 60px;
+}
+
+.review-product{
+    height: 250px;
+    width: 250px;
+}
+.review-product img{
+    max-height: 250px;
+    max-width: 250px;
+    height: auto;
+    width: auto;
+    margin:auto;
+}
+
+.recent-review h3, .review-body{
+    font-size: 12px;
+    line-height: 1.7em;
+    -webkit-text-stroke: .1px white;
+    font-weight: 400;
+}

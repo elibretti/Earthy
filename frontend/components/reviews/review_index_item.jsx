@@ -11,7 +11,7 @@ const ReviewIndexItem = ({review}) => {
             </div>
             <div className="review-info-container">
                 <div className="review-item-header">
-                    <h2 className="review-name">{review.first_name}</h2>
+                    <h2 className="review-name">{review.user}</h2>
                     <Moment className="review-date" format="MMMM D, YYYY">
                             {review.updated_at}
                     </Moment>
