@@ -966,19 +966,21 @@ function (_React$Component) {
       var _this3 = this;
 
       var item = this.props.item;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/products/".concat(item.product_id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.seller_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, item.seller_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-container-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.product_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-image-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: item.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/products/".concat(item.product_id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, item.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.props.deleteCartItem(_this3.props.item.id);
         }
@@ -993,7 +995,7 @@ function (_React$Component) {
         value: this.state.quantity
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-price"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", this.totalPrice()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "($", item.price, ")"))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "$", this.totalPrice()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "($", item.price, ")")))));
     }
   }]);
 
@@ -1496,7 +1498,12 @@ function (_React$Component) {
         href: "https://angel.co/elizabeth-libretti-1?public_profile=1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-angellist"
-      }))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://elibretti.github.io/",
+        id: "site"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user"
+      }), "       ")));
     }
   }]);
 

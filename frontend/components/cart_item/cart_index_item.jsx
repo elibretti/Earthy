@@ -41,18 +41,23 @@ class CartIndexItem extends React.Component{
         let item = this.props.item;
         return (
             <li>
-                <Link to={`/products/${item.product_id}`}>
                     <h1>{item.seller_name}</h1>
                     <div className="item-container">
                         <div className="item-container-left">
-                            <div className="cart-image-container">
-                            <img src={item.photoUrl}/>
-                            </div>
+                            <Link to={`/products/${item.product_id}`}>
+                                <div className="cart-image-container">
+                                <img src={item.photoUrl}/>
+                                </div>
+                            </Link>
                             <div className="item-info">
+                            <Link to={`/products/${item.product_id}`}>
                                 <h2>{item.title}</h2>
+                            </Link>
+
                                 <button onClick={() => this.props.deleteCartItem(this.props.item.id)}>Remove</button>
                             </div>
                         </div>
+
                         <div className="item-container-right">
                             <input id="quantity" type="number"  onChange={this.update('quantity')} min="1" max="100" value={this.state.quantity}/>
                             <div className="item-price">
@@ -61,7 +66,6 @@ class CartIndexItem extends React.Component{
                             </div>
                         </div>
                     </div>
-                </Link>
             </li>
         )
     }

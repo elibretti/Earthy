@@ -1,7 +1,7 @@
 .recent-review-list{
     margin-top: 30px;
     display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     grid-column-gap: 20px;
     width: 100%
 }
