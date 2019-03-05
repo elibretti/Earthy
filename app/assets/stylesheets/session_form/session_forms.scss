@@ -43,7 +43,7 @@
     transition: 1s ease;
 }
 
-.session-form-container input[type='submit'], .demo { 
+.session-form-container button[type='submit'], .demo { 
     width: 300px;
     margin: 20px 0;
     background: black;
@@ -76,7 +76,7 @@
     transition: .5s ease;
 }
 
-.session-form-container input[type='submit']:hover {
+.session-form-container button[type='submit']:hover {
     background: rgb(85, 84, 84);
     border: 1px solid rgb(85, 84, 84);
     transition: .2s ease;

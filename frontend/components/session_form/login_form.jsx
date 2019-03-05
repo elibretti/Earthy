@@ -37,7 +37,7 @@ class LoginForm extends React.Component{
     }
 
     handleClick(e){
-        e.stopPropagation();
+        e.preventDefault();
         const demo = {
             email: "GoingGreenIn2019",
             password: "DemoUser"
@@ -72,7 +72,7 @@ class LoginForm extends React.Component{
                     value={this.state.password} 
                     onChange={this.update("password")}/>
                 <button className="demo" onClick={this.handleClick}>Demo User</button>
-                <input type="submit" value="Sign In"/>
+                <button type="submit">Sign In</button>
                 <button id="session-alt" onClick={() => this.props.openModal()}>or Sign Up</button>
                 </form>
             </div>

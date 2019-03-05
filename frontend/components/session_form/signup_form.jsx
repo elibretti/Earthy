@@ -68,7 +68,7 @@ class SignUpForm extends React.Component{
                     id="password"
                     value={this.state.password} 
                     onChange={this.update("password")}/>
-                <input type="submit" value="Register"/>
+                <button type="submit">Register</button>
                 <button  id="session-alt" onClick={() => this.props.openModal()}>or Login</button>
                 </form>
             </div>

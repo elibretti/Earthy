@@ -3768,7 +3768,7 @@ function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      e.stopPropagation();
+      e.preventDefault();
       var demo = {
         email: "GoingGreenIn2019",
         password: "DemoUser"
@@ -3811,10 +3811,9 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo",
         onClick: this.handleClick
-      }, "Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Sign In"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "session-alt",
         onClick: function onClick() {
           return _this3.props.openModal();
@@ -4002,10 +4001,9 @@ function (_React$Component) {
         id: "password",
         value: this.state.password,
         onChange: this.update("password")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Register"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "session-alt",
         onClick: function onClick() {
           return _this3.props.openModal();
