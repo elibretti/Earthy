@@ -2,7 +2,7 @@
 
 Earthy is an Etsy inspired website dedicated to making eco-friendly easy to find and purchase.
 
-Live Link: https://earthy-app.herokuapp.com
+[Live Link](https://earthy-app.herokuapp.com)
 
 ## Features
 * Secure backend to frontend User Authentication using BCrypt 
